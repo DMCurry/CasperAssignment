@@ -16,7 +16,7 @@
     "1 teaspoon vanilla extract",
     "0.5 cup milk",
     "2 cups apple - peeled, cored, and chopped",
-    "2.5 cups apple chunks - peeled, cored, and chopped",
+    "1 cup apple - peeled, cored, and chopped",
     "2 cups sifted confectioners' sugar",
     "0.25 cup shortening",
     "0.25 teaspoon ground cinnamon",
@@ -33,21 +33,22 @@
   "modifications_applied": [
     {
       "source_review": {
-        "text": "Will make this one again! (maybe for Thanksgiving dessert) I would prefer some more apple chunks in it, but that is just my preference. This cake is sweet and delicious.",
+        "text": "Mmmm, this cake was so good. I made it exactly as directed except I used a different frosting only because I had some leftover from another cake. The next time I make this I will add one more cup of apples because more is better right?!",
         "reviewer": null,
-        "rating": 5
+        "rating": 5,
+        "helpful_count": 0
       },
       "modification_types": [
         "addition"
       ],
-      "summary_reasoning": "Reviewer prefers more apple chunks for added texture and flavor",
+      "summary_reasoning": "Reviewer wants to increase the amount of apples for more flavor and texture",
       "changes_made": [
         {
           "type": "ingredient",
           "edit_type": "addition",
-          "reasoning": "Reviewer prefers more apple chunks for added texture and flavor",
+          "reasoning": "Reviewer wants to increase the amount of apples for more flavor and texture",
           "from_text": "",
-          "to_text": "2.5 cups apple chunks - peeled, cored, and chopped",
+          "to_text": "1 cup apple - peeled, cored, and chopped",
           "operation": "add",
           "line_index": 13
         }
@@ -59,13 +60,13 @@
     "change_types": [
       "addition"
     ],
-    "expected_impact": "Reviewer prefers more apple chunks for added texture and flavor"
+    "expected_impact": "Reviewer wants to increase the amount of apples for more flavor and texture"
   },
   "description": "This delicious spicy apple cake recipe is made with fresh apples, spices, and sugar. It&#39;s a wonderfully perfect treat for the apple harvest season.",
   "servings": "9",
   "prep_time": null,
   "cook_time": null,
   "total_time": null,
-  "created_at": "2026-06-02T13:17:38.179227",
+  "created_at": "2026-06-02T14:16:43.459410",
   "pipeline_version": "1.0.0"
 }

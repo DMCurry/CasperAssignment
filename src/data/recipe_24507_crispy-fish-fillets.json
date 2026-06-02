@@ -1,0 +1,236 @@
+{
+  "url": "https://www.allrecipes.com/recipe/24507/crispy-fish-fillets/",
+  "scraped_at": "2026-06-02T15:27:58.352579",
+  "recipe_id": "24507",
+  "title": "Crispy Fish Fillets",
+  "description": "Delicious sole dredged in an egg and mustard mixture, then potato flakes; pan fried to a golden brown. Serve with lemon wedges and tartar sauce.",
+  "rating": {
+    "value": "4.5",
+    "count": "504"
+  },
+  "preptime": "PT10M",
+  "cooktime": "PT10M",
+  "totaltime": "PT20M",
+  "servings": "4",
+  "ingredients": [
+    "1 egg",
+    "2 tablespoons prepared yellow mustard",
+    "0.5 teaspoon salt",
+    "1.5 cups instant mashed potato flakes",
+    "0.25 cup oil for frying",
+    "4 (6 ounce) fillets sole"
+  ],
+  "instructions": [
+    "In a shallow dish, whisk together the egg, mustard, and salt; set aside. Place the potato flakes in another shallow dish.",
+    "Heat oil in a large heavy skillet over medium-high heat.",
+    "Dip fish fillets in the egg mixture. Dredge the fillets in the potato flakes, making sure to completely coat the fish. For extra crispy, dip into egg and potato flakes again.",
+    "Fry fish fillets in oil for 3 to 4 minutes on each side, or until golden brown."
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": "391 kcal",
+    "carbohydrateContent": "26 g",
+    "cholesterolContent": "137 mg",
+    "fiberContent": "2 g",
+    "proteinContent": "30 g",
+    "saturatedFatContent": "4 g",
+    "sodiumContent": "656 mg",
+    "sugarContent": "1 g",
+    "fatContent": "18 g",
+    "unsaturatedFatContent": "0 g"
+  },
+  "author": "[{'@type': 'Person', 'name': 'Kimber'}]",
+  "categories": [
+    "Dinner"
+  ],
+  "featured_tweaks": [
+    {
+      "review_rank": 0,
+      "text": "The boyfriend stopped 3 times to say how awesome the coating was. The key is definitely as others have said, to flour the fish first - this way the egg/mixture sticks better and you get a better coating. I could have eaten this without a sauce on the side - the mustard made such a nice addition. At first I thought it was too much but it really wasn't - after it's fried it's not as potent. We also threw in some garlic powder into the mustard/egg mixture (if you throw the spices into the potato mixture it will fall to the bottom and never get on the fish). I used tilapia (apparently they dont carry grey sole or any sole for that matter in Virginia) and only needed 2 minutes on each side for a gorgeous golden brown coating.",
+      "username": "STARDUST_331",
+      "rating": 5,
+      "is_most_helpful_positive": true,
+      "has_modification": true
+    }
+  ],
+  "reviews": [
+    {
+      "review_rank": 0,
+      "text": "The boyfriend stopped 3 times to say how awesome the coating was. The key is definitely as others have said, to flour the fish first - this way the egg/mixture sticks better and you get a better coating. I could have eaten this without a sauce on the side - the mustard made such a nice addition. At first I thought it was too much but it really wasn't - after it's fried it's not as potent. We also threw in some garlic powder into the mustard/egg mixture (if you throw the spices into the potato mixture it will fall to the bottom and never get on the fish). I used tilapia (apparently they dont carry grey sole or any sole for that matter in Virginia) and only needed 2 minutes on each side for a gorgeous golden brown coating.",
+      "username": "STARDUST_331",
+      "rating": 5,
+      "is_most_helpful_positive": true,
+      "has_modification": true
+    },
+    {
+      "review_rank": 1,
+      "text": "This was so easy and good (used cod) for fish tacos. I made a couple changes: 1] used one-third cojita + two-thirds potato flakes, and 2] used Dijon instead of yellow mustard. Also did the recommended primary flour dredge. A squeeze of fresh lime juice was all it needed out of the pan.",
+      "username": "Nichole.O",
+      "rating": 5,
+      "date": "2023-06-11T05:18:49.371Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 2,
+      "text": "Really good coating. I used what I had...mostly Panko w/ some seasoned breadcrumbs which I seasoned w/ a smidge of salt, pinch of garlic granules. I also seasoned AP flour w/ Mrs Dash Garlic and Herb and low salt Old Bay. Then I coated the cod w/ flour, egg wash as shown in the recipe then the Panko/breadcrumb mix. Very good flavor, crisped up nice in Peanut Oil. I cut down in over all salt but it still tasted great. One thing I did was absorb as much water from the frozen cod via gravity and paper towels. Made for a much better dining experience than cooking wet fish.",
+      "username": "Casey M",
+      "rating": 5,
+      "date": "2016-01-21T20:41:25.590Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 3,
+      "text": "A few changes, but this is a real keeper recipe. I used Haddock....oh man, it was so good! Used a little flour to dust, and Dijon mustard rather than yellow. The fish was a little thicker, so I finished in a 375 oven for about 8 minutes. \n\nWhile it was in the oven, I drained most of the oil from the skillet, added a little butter, and let it brown. Then added fresh lemon juice. Reduce . I didn't want to make the crispy coating soggy, so I drizzled the sauce on some arugula, then put the fish on top of that. Yum!",
+      "username": "JeanneB",
+      "rating": 5,
+      "date": "2018-04-05T23:30:49.987Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 4,
+      "text": "Definitely will make it again!!! Used wild caught orange roughy. Trying to cut back on carbs so instead of potato flakes used 1 cup almond flour and 1/2 cup shelled hemp seed. As recommended, dipped in egg/mustard/salt mixture then almond/hemp seed mix then did it again to give it a thicker coating. My husband and I loved it! Thank you for the recipe.",
+      "username": "ChefMama",
+      "rating": 5,
+      "date": "2019-01-05T22:54:09.110Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 5,
+      "text": "Great recipe. I used Tilapia fish, dipped the fish in Spelt flour before dipping it into the egg mixture and used plain bread crumbs instead of the potato flakes and it turned out great. I didn't even have to use ketchup to give it more taste, it had enough on it's own.",
+      "username": "PhyllisM",
+      "rating": 5,
+      "date": "2015-07-12T09:30:48.167Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 6,
+      "text": "Cannot believe how light and crispy the flounder came out. I prepared the fillets and left them on a cooling rack for about ten minutes while I made the rest of dinner — and I think that’s the trick to crispy. As other reviewers did, I lightly floured the fish before the egg dip. Next time, I’ll cut back to maybe just a Tb of mustard, or skip it and try some herbs. I can see using this for any kind of fish, shrimp, chicken.",
+      "username": "Gracie",
+      "rating": 4,
+      "date": "2019-04-26T11:20:43.760Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 7,
+      "text": "Instead of potato flakes I finely crushEd potato chips, floured, egged and rolled in the crushed potato chips. The chips gave it so much more flavor.. the salt and vinegar chips goes very well with the fish. We ate it so fast I couldn’t get a picture. Try it you’ll like it..",
+      "username": "Antoinette Smit",
+      "rating": 5,
+      "date": "2019-10-04T20:28:44.107Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 8,
+      "text": "So easy and SO good. I've never fried anything on the stove top before so this was a good start. I dipped the fish (Talapia) in flour per others recommendations, before dipping it in the mustard/egg coating and used 1 c. of potato flakes and 1/2 c. of Parmesan cheese along w/ the salt and added some pepper for the outside. It turned out great. My husband and I both loved it. I'll definitely be making this again...soon.",
+      "username": "Hopewell",
+      "rating": 5,
+      "date": "2016-06-03T03:52:54.807Z"
+    },
+    {
+      "review_rank": 9,
+      "text": "Delicious! I've made this both as a fry of a filet and as a fry of fish sticks. It works every time. I agree that a flour dredge first helps the egg mixture and mashed potato flakes stick to the fish.",
+      "username": "burrygowen",
+      "rating": 5,
+      "date": "2020-05-30T02:04:15.963Z"
+    },
+    {
+      "review_rank": 10,
+      "text": "really, really good. used tilapia, dredged in flour first to help the egg stick, substituted dijon mustard. the potato flakes make a crispy, yummy crust. delish!",
+      "username": "kate",
+      "rating": 5,
+      "date": "2016-09-11T00:25:34.477Z"
+    },
+    {
+      "review_rank": 11,
+      "text": "Will use again. Delish.",
+      "username": "Jay",
+      "rating": 5,
+      "date": "2025-07-26T22:59:42.191Z"
+    },
+    {
+      "review_rank": 14,
+      "text": "My family liked it. I did add a little milk to thin out the mustard. I used flavored potatoes (sour cream with chive) (Idahoan) and It added another layer to the flavor. Will make again.",
+      "username": "Deanna A",
+      "rating": 4,
+      "date": "2024-05-12T05:52:15.279Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 15,
+      "text": "i use this recipe alot. just made them in the air fryer",
+      "username": "prettybyrd90",
+      "rating": 5,
+      "date": "2023-07-21T00:06:27.411Z"
+    },
+    {
+      "review_rank": 16,
+      "text": "I was super excited to try this and thought it would be fabulous after reading the reviews. It was anything but. Plain, bland -- frozen fish sticks would have been tastier. I am so disappointed that I wasted good halibut filets on this.",
+      "username": "Kathy",
+      "rating": 2,
+      "date": "2020-11-22T17:35:59.257Z"
+    },
+    {
+      "review_rank": 17,
+      "text": "This is absolutely phenomenal. I follow the recipe exactly (although I use whatever fish we happen to have) and it's my new go-to fish recipe!",
+      "username": "Dottie",
+      "rating": 5,
+      "date": "2020-10-25T15:59:28.543Z"
+    },
+    {
+      "review_rank": 18,
+      "text": "Yes I used yellow corn meal instead of flaky potatoes.",
+      "username": "Terrell Smith",
+      "rating": 5,
+      "date": "2020-05-18T20:19:54.443Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 19,
+      "text": "Great recipe. I followed other reviews and dusted fish with old bay and seasoned flour before the egg wash. They came out crispy and tender. Easy to prepare and tasted great . No more frozen fish stix on our table.",
+      "username": "Corn Chopper",
+      "rating": 5,
+      "date": "2020-05-14T03:45:11.757Z",
+      "has_modification": true
+    },
+    {
+      "text": "Very good. Loved the tenderness and crunch. Personally I’d add more seasoning to mustard and egg but very good moist and crunch",
+      "rating": 4,
+      "date": "10/09/2019",
+      "has_modification": true,
+      "review_rank": 18
+    },
+    {
+      "text": "It’s a good start but I’d definitely add some kind of seasoning. Just going by the recipe as is the fish will almost taste like nothing although the texture is on point. I added paprika garlic salt and a healthy portion of Creole seasoning and it turned out perfect!\nSide note I used tilapia because that’s just what I had on hand.",
+      "rating": 4,
+      "date": "10/05/2019",
+      "has_modification": true,
+      "review_rank": 19
+    },
+    {
+      "text": "I loved this fish...\nDredged in flour first...but definitely use the mashed potatoes ..unique and flavorful....I used garlic mashed\nI also only used 1 large tbsp of mustard...2 seemed too much with only 1 egg...and I added parsley to egg mixture\nWill definitely make this again and try various flavours with Dijon or other spices mmmmm",
+      "rating": 4,
+      "date": "08/09/2019",
+      "has_modification": true,
+      "review_rank": 20
+    },
+    {
+      "text": "This was so quick and easy, definitely a new keeper.",
+      "rating": 5,
+      "date": "01/09/2019",
+      "review_rank": 21
+    },
+    {
+      "text": "Great recipe, added a little extra salt",
+      "rating": 5,
+      "date": "12/20/2018",
+      "has_modification": true,
+      "review_rank": 22
+    },
+    {
+      "text": "Amazing fish recipe . I have never ever eaten more tasty crusted fish than this one . I used tilapia. As suggested by others dredged in flour, in which I had mixed Italian spices , garlic pd And some Cayenne pepper . I served it with baked potatoes with mayonnaise +dil +some salt and pepper. Baked Broccoli on the side. Thank you soooo much .",
+      "rating": 5,
+      "date": "12/15/2018",
+      "has_modification": true,
+      "review_rank": 23
+    }
+  ]
+}

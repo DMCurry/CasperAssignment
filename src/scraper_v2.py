@@ -1,3 +1,4 @@
+import html
 import json
 import re
 from datetime import datetime
@@ -6,90 +7,227 @@ from typing import Any, Dict, List, Optional
 import requests
 from bs4 import BeautifulSoup
 
+MODIFICATION_PATTERNS = [
+    r"I (added|used|substituted|replaced|made with|changed)",
+    r"(instead of|rather than|in place of)",
+    r"(next time|will make again|definitely make)",
+    r"(doubled|tripled|halved|increased|decreased)",
+    r"(more|less|extra) ([\w\s]+)",
+]
+
+
+def text_has_modification(text: str) -> bool:
+    """Return True when review text matches common modification heuristics."""
+    return any(
+        re.search(pattern, text, re.IGNORECASE) for pattern in MODIFICATION_PATTERNS
+    )
+
+
+def _count_filled_stars(review_elem) -> Optional[int]:
+    """Count filled star icons in a review card."""
+    filled_stars = review_elem.find_all(
+        "svg",
+        class_=lambda value: value
+        and "ugc-shared-icon-star" in value
+        and "outline" not in " ".join(value),
+    )
+    if filled_stars:
+        return len(filled_stars)
+
+    legacy_stars = review_elem.find_all("svg", {"class": "icon-star"})
+    if legacy_stars:
+        return len(legacy_stars)
+
+    return None
+
 
 def extract_review_data(review_elem) -> Dict:
     """Extract review/tweak data from a review element"""
     review_data = {}
 
-    # Try to extract review text - updated selectors based on actual HTML
-    text_selectors = [
-        ("div", {"class": "ugc-review__text"}),
-        ("div", {"class": re.compile(r"ugc-review__text")}),
-        ("div", {"class": re.compile(r"recipe-review__text")}),
-        ("div", {"class": re.compile(r"ReviewText")}),
-        ("div", {"class": re.compile(r"ugc-review-body")}),
-        ("p", {"class": re.compile(r"review")}),
-    ]
+    # Current AllRecipes threaded review cards (Vue SSR)
+    text_elem = review_elem.select_one(".mm-recipes-ugc-shared-item-card__text")
+    if text_elem:
+        review_text = text_elem.get_text(strip=True)
+        if review_text:
+            review_data["text"] = review_text
 
-    for tag, attrs in text_selectors:
-        text_elem = review_elem.find(tag, attrs)
-        if text_elem:
-            review_text = text_elem.get_text(strip=True)
-            if review_text:
-                review_data["text"] = review_text
+    # Legacy / photo-dialog review markup
+    if not review_data.get("text"):
+        text_selectors = [
+            ("div", {"class": "ugc-review__text"}),
+            ("div", {"class": re.compile(r"ugc-review__text")}),
+            ("div", {"class": re.compile(r"recipe-review__text")}),
+            ("div", {"class": re.compile(r"ReviewText")}),
+            ("div", {"class": re.compile(r"ugc-review-body")}),
+            ("p", {"class": re.compile(r"review")}),
+        ]
+
+        for tag, attrs in text_selectors:
+            text_elem = review_elem.find(tag, attrs)
+            if text_elem:
+                review_text = text_elem.get_text(strip=True)
+                if review_text:
+                    review_data["text"] = review_text
+                    break
+
+    star_count = _count_filled_stars(review_elem)
+    if star_count is not None:
+        review_data["rating"] = star_count
+
+    if "rating" not in review_data:
+        rating_selectors = [
+            ("div", {"class": "ugc-review__rating"}),
+            ("div", {"class": re.compile(r"ugc-review__rating")}),
+            ("span", {"class": re.compile(r"rating-stars")}),
+            ("div", {"class": re.compile(r"RatingStar")}),
+            ("span", {"aria-label": re.compile(r"rated \d+ out of 5")}),
+        ]
+
+        for tag, attrs in rating_selectors:
+            rating_elem = review_elem.find(tag, attrs)
+            if rating_elem:
+                aria_label = rating_elem.get("aria-label", "")
+                rating_match = re.search(r"rated (\d+)", aria_label)
+                if rating_match:
+                    review_data["rating"] = int(rating_match.group(1))
+                else:
+                    stars = rating_elem.find_all("svg", {"class": "icon-star"})
+                    if stars:
+                        review_data["rating"] = len(stars)
                 break
 
-    # Try to extract rating
-    rating_selectors = [
-        ("div", {"class": "ugc-review__rating"}),
-        ("div", {"class": re.compile(r"ugc-review__rating")}),
-        ("span", {"class": re.compile(r"rating-stars")}),
-        ("div", {"class": re.compile(r"RatingStar")}),
-        ("span", {"aria-label": re.compile(r"rated \d+ out of 5")}),
-    ]
-
-    for tag, attrs in rating_selectors:
-        rating_elem = review_elem.find(tag, attrs)
-        if rating_elem:
-            # Try to extract number from aria-label or count stars
-            aria_label = rating_elem.get("aria-label", "")
-            rating_match = re.search(r"rated (\d+)", aria_label)
-            if rating_match:
-                review_data["rating"] = int(rating_match.group(1))
-            else:
-                # Count filled stars (SVG elements with class icon-star)
-                stars = rating_elem.find_all("svg", {"class": "icon-star"})
-                if stars:
-                    review_data["rating"] = len(stars)
-            break
-
-    # Try to extract username
-    user_selectors = [
-        ("span", {"class": re.compile(r"recipe-review__author")}),
-        ("span", {"class": re.compile(r"reviewer-name")}),
-        ("a", {"class": re.compile(r"cook-name")}),
-    ]
-
-    for tag, attrs in user_selectors:
-        user_elem = review_elem.find(tag, attrs)
-        if user_elem:
-            review_data["username"] = user_elem.get_text(strip=True)
-            break
-
-    # Try to extract date
-    date_elem = review_elem.find(
-        ["span", "time"], {"class": re.compile(r"recipe-review__date")}
+    user_elem = review_elem.select_one(
+        ".mm-recipes-ugc-shared-card-byline__username-text"
     )
+    if user_elem:
+        review_data["username"] = user_elem.get_text(strip=True)
+    else:
+        user_selectors = [
+            ("span", {"class": re.compile(r"recipe-review__author")}),
+            ("span", {"class": re.compile(r"reviewer-name")}),
+            ("a", {"class": re.compile(r"cook-name")}),
+        ]
+
+        for tag, attrs in user_selectors:
+            user_elem = review_elem.find(tag, attrs)
+            if user_elem:
+                review_data["username"] = user_elem.get_text(strip=True)
+                break
+
+    date_elem = review_elem.select_one(".mm-recipes-ugc-shared-card-meta__date")
+    if not date_elem:
+        date_elem = review_elem.find(
+            ["span", "time", "div"],
+            {"class": re.compile(r"(recipe-review__date|ugc-review__date)")},
+        )
     if date_elem:
         review_data["date"] = date_elem.get_text(strip=True)
 
-    # Look for modifications/tweaks in review text
-    if review_data.get("text"):
-        # Common patterns for recipe modifications
-        tweak_patterns = [
-            r"I (added|used|substituted|replaced|made with|changed)",
-            r"(instead of|rather than|in place of)",
-            r"(next time|will make again|definitely make)",
-            r"(doubled|tripled|halved|increased|decreased)",
-            r"(more|less|extra) ([\w\s]+)",
-        ]
+    if review_elem.select_one(
+        ".mm-recipes-ugc-threaded-add-feedback__most-helpful-title"
+    ):
+        review_data["is_most_helpful_positive"] = True
 
-        for pattern in tweak_patterns:
-            if re.search(pattern, review_data["text"], re.IGNORECASE):
-                review_data["has_modification"] = True
-                break
+    # Look for modifications/tweaks in review text
+    if review_data.get("text") and text_has_modification(review_data["text"]):
+        review_data["has_modification"] = True
 
     return review_data
+
+
+def parse_json_ld_review(raw: Dict[str, Any], rank: int) -> Dict[str, Any]:
+    """
+    Convert a schema.org Review object from JSON-LD into scraper review data.
+
+    AllRecipes preserves community ranking in JSON-LD order; rank 0 corresponds
+    to the surfaced "Most helpful positive review".
+    """
+    review_data: Dict[str, Any] = {"review_rank": rank}
+
+    text = html.unescape(raw.get("reviewBody", "") or "").strip()
+    if text:
+        review_data["text"] = text
+
+    author = raw.get("author")
+    if isinstance(author, dict):
+        review_data["username"] = author.get("name")
+    elif author:
+        review_data["username"] = str(author)
+
+    rating_obj = raw.get("reviewRating")
+    if isinstance(rating_obj, dict) and rating_obj.get("ratingValue") is not None:
+        try:
+            review_data["rating"] = int(float(rating_obj["ratingValue"]))
+        except (TypeError, ValueError):
+            pass
+
+    if raw.get("datePublished"):
+        review_data["date"] = raw["datePublished"]
+
+    if rank == 0:
+        review_data["is_most_helpful_positive"] = True
+
+    if text and text_has_modification(text):
+        review_data["has_modification"] = True
+
+    return review_data
+
+
+def extract_reviews_from_json_ld(recipe_ld: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Extract ranked reviews from Recipe JSON-LD (available on initial HTML fetch)."""
+    reviews_raw = recipe_ld.get("review")
+    if not reviews_raw:
+        return []
+
+    if not isinstance(reviews_raw, list):
+        reviews_raw = [reviews_raw]
+
+    reviews: List[Dict[str, Any]] = []
+    for rank, raw in enumerate(reviews_raw[:50]):
+        if not isinstance(raw, dict):
+            continue
+        parsed = parse_json_ld_review(raw, rank)
+        if parsed.get("text"):
+            reviews.append(parsed)
+
+    return reviews
+
+
+def merge_review_lists(
+    primary: List[Dict[str, Any]], *supplemental_lists: List[Dict[str, Any]]
+) -> List[Dict[str, Any]]:
+    """
+    Merge review lists while preserving primary order and deduplicating by text prefix.
+
+    Primary reviews (JSON-LD) keep their rank. Unique supplemental reviews append
+    at the end with sequential ranks.
+    """
+    merged = [review.copy() for review in primary]
+    seen_prefixes = {
+        review["text"][:100].strip().lower()
+        for review in merged
+        if review.get("text")
+    }
+    next_rank = len(merged)
+
+    for supplemental in supplemental_lists:
+        for review in supplemental:
+            text = review.get("text")
+            if not text:
+                continue
+
+            prefix = text[:100].strip().lower()
+            if prefix in seen_prefixes:
+                continue
+
+            extra = review.copy()
+            extra.setdefault("review_rank", next_rank)
+            next_rank += 1
+            merged.append(extra)
+            seen_prefixes.add(prefix)
+
+    return merged
 
 
 def extract_recipe_from_json_ld(data: Any) -> Optional[Dict]:
@@ -233,67 +371,98 @@ def scrape_allrecipes(url: str) -> Optional[Dict]:
                 else:
                     recipe_data["keywords"] = keywords
 
-        # Extract featured tweaks first - looking for top reviews with photos
+        # Extract reviews — JSON-LD first (ranked on initial HTML), HTML supplements
         recipe_data["featured_tweaks"] = []
+        recipe_data["reviews"] = []
 
-        # Look for photo dialog items which often contain featured reviews
+        json_ld_reviews = (
+            extract_reviews_from_json_ld(recipe_found) if recipe_found else []
+        )
+        if json_ld_reviews:
+            print(
+                f"Extracted {len(json_ld_reviews)} ranked reviews from JSON-LD "
+                f"(most helpful: {json_ld_reviews[0].get('username', 'unknown')})"
+            )
+
+        html_reviews: List[Dict[str, Any]] = []
+        reviews_found = soup.select("div.mm-recipes-ugc-shared-item-card--review")
+
+        if reviews_found:
+            print(
+                f"Found {len(reviews_found)} threaded review cards "
+                "(mm-recipes-ugc-shared-item-card--review)"
+            )
+        else:
+            review_selectors = [
+                ("div", {"class": "ugc-review"}),
+                ("div", {"class": re.compile(r"ugc-review")}),
+                ("div", {"class": re.compile(r"ReviewCard__container")}),
+                ("div", {"class": re.compile(r"review-container")}),
+                ("article", {"class": re.compile(r"review")}),
+            ]
+
+            for tag, attrs in review_selectors:
+                reviews_found = soup.find_all(tag, attrs, limit=50)
+                if reviews_found:
+                    print(
+                        f"Found {len(reviews_found)} reviews using selector: {tag} {attrs}"
+                    )
+                    break
+
+        for review_elem in reviews_found[:50]:
+            review_data_item = extract_review_data(review_elem)
+            if review_data_item and review_data_item.get("text"):
+                html_reviews.append(review_data_item)
+
+        recipe_data["reviews"] = merge_review_lists(json_ld_reviews, html_reviews)
+
+        most_helpful_review = next(
+            (
+                review
+                for review in recipe_data["reviews"]
+                if review.get("is_most_helpful_positive")
+            ),
+            recipe_data["reviews"][0] if recipe_data["reviews"] else None,
+        )
+        recipe_data["featured_tweaks"] = (
+            [most_helpful_review] if most_helpful_review else []
+        )
+
+        if most_helpful_review:
+            print(
+                "Identified most helpful positive review "
+                f"(rank={most_helpful_review.get('review_rank', 0)}, "
+                f"user={most_helpful_review.get('username', 'unknown')})"
+            )
+
+        # Supplement featured_tweaks with unique photo-dialog modification reviews
         photo_dialog_items = soup.find_all(
             "div", {"class": re.compile(r"photo-dialog__item")}
         )
+        seen_text_prefixes = {
+            review["text"][:100]
+            for review in recipe_data["reviews"]
+            if review.get("text")
+        }
 
-        if photo_dialog_items:
-            potential_tweaks = []
-            for item in photo_dialog_items[:10]:  # Check top 10 items
-                # Extract review from within the photo dialog item
-                review_section = item.find("div", {"class": "ugc-review"})
-                if review_section:
-                    tweak_data = extract_review_data(review_section)
-                    if (
-                        tweak_data
-                        and tweak_data.get("text")
-                        and tweak_data.get("has_modification")
-                    ):
-                        tweak_data["is_featured"] = True
-                        potential_tweaks.append(tweak_data)
+        for item in photo_dialog_items[:10]:
+            review_section = item.find("div", {"class": "ugc-review"})
+            if not review_section:
+                continue
 
-            # Take the tweaks as-is without sorting by helpful count
-            recipe_data["featured_tweaks"] = potential_tweaks
+            tweak_data = extract_review_data(review_section)
+            text = tweak_data.get("text")
+            if not text or not tweak_data.get("has_modification"):
+                continue
 
-            if recipe_data["featured_tweaks"]:
-                print(
-                    f"Extracted {len(recipe_data['featured_tweaks'])} featured tweaks from photo reviews"
-                )
+            prefix = text[:100]
+            if prefix in seen_text_prefixes:
+                continue
 
-        # Extract reviews/comments for tweaks (updated selectors)
-        recipe_data["reviews"] = []
+            recipe_data["featured_tweaks"].append(tweak_data)
+            seen_text_prefixes.add(prefix)
 
-        # Try different review selectors - prioritize ugc-review which is the current class
-        review_selectors = [
-            ("div", {"class": "ugc-review"}),  # Exact match first
-            ("div", {"class": re.compile(r"ugc-review")}),  # Then regex
-            ("div", {"class": re.compile(r"ReviewCard__container")}),
-            ("div", {"class": re.compile(r"review-container")}),
-            ("article", {"class": re.compile(r"review")}),
-        ]
-
-        reviews_found = []
-        for tag, attrs in review_selectors:
-            reviews_found = soup.find_all(
-                tag, attrs, limit=50
-            )  # Limit to 50 for performance
-            if reviews_found:
-                print(
-                    f"Found {len(reviews_found)} reviews using selector: {tag} {attrs}"
-                )
-                break
-
-        # Parse reviews using the helper function
-        for review_elem in reviews_found[:30]:  # Get up to 30 reviews
-            review_data = extract_review_data(review_elem)
-            if review_data and review_data.get("text"):
-                recipe_data["reviews"].append(review_data)
-
-        print(f"Extracted {len(recipe_data['reviews'])} reviews")
+        print(f"Extracted {len(recipe_data['reviews'])} total reviews")
 
         return recipe_data
 

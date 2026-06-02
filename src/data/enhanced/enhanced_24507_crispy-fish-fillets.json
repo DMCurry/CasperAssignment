@@ -1,0 +1,91 @@
+{
+  "recipe_id": "24507_enhanced",
+  "original_recipe_id": "24507",
+  "title": "Crispy Fish Fillets (Community Enhanced)",
+  "ingredients": [
+    "1 egg",
+    "2 tablespoons prepared yellow mustard",
+    "1/2 teaspoon garlic powder, mixed with the mustard",
+    "0.5 teaspoon salt",
+    "1.5 cups instant mashed potato flakes",
+    "0.25 cup oil for frying",
+    "4 (6 ounce) fillets tilapia"
+  ],
+  "instructions": [
+    "In a shallow dish, whisk together the egg, mustard, and salt; set aside. Place the potato flakes in another shallow dish.",
+    "Heat oil in a large heavy skillet over medium-high heat.",
+    "Dip fish fillets in the egg mixture. Dredge the fillets in the potato flakes, making sure to completely coat the fish. For extra crispy, dip into egg and potato flakes again.",
+    "Dredge fish fillets in flour before dipping in the egg mixture, then coat in potato flakes. For extra crispiness, repeat the process of dipping in egg and potato flakes.",
+    "Fry tilapia fillets in oil for 2 minutes on each side, or until golden brown."
+  ],
+  "modifications_applied": [
+    {
+      "source_review": {
+        "text": "The boyfriend stopped 3 times to say how awesome the coating was. The key is definitely as others have said, to flour the fish first - this way the egg/mixture sticks better and you get a better coating. I could have eaten this without a sauce on the side - the mustard made such a nice addition. At first I thought it was too much but it really wasn't - after it's fried it's not as potent. We also threw in some garlic powder into the mustard/egg mixture (if you throw the spices into the potato mixture it will fall to the bottom and never get on the fish). I used tilapia (apparently they dont carry grey sole or any sole for that matter in Virginia) and only needed 2 minutes on each side for a gorgeous golden brown coating.",
+        "reviewer": "STARDUST_331",
+        "rating": 5,
+        "review_rank": 0
+      },
+      "modification_types": [
+        "addition",
+        "technique_change",
+        "ingredient_substitution"
+      ],
+      "summary_reasoning": "Reviewer added garlic powder to the egg/mustard mixture for extra flavor; Reviewer substituted tilapia for sole due to availability, adjusted cooking time accordingly; Reviewer suggests flouring the fish before dipping in egg mixture for better coating adhesion; Update cooking time for tilapia fillets based on reviewer's experience",
+      "changes_made": [
+        {
+          "type": "ingredient",
+          "edit_type": "addition",
+          "reasoning": "Reviewer added garlic powder to the egg/mustard mixture for extra flavor",
+          "from_text": "",
+          "to_text": "1/2 teaspoon garlic powder, mixed with the mustard",
+          "operation": "add",
+          "line_index": 2
+        },
+        {
+          "type": "ingredient",
+          "edit_type": "ingredient_substitution",
+          "reasoning": "Reviewer substituted tilapia for sole due to availability, adjusted cooking time accordingly",
+          "from_text": "4 (6 ounce) fillets sole",
+          "to_text": "4 (6 ounce) fillets tilapia",
+          "operation": "replace",
+          "line_index": 6
+        },
+        {
+          "type": "instruction",
+          "edit_type": "technique_change",
+          "reasoning": "Reviewer suggests flouring the fish before dipping in egg mixture for better coating adhesion",
+          "from_text": "",
+          "to_text": "Dredge fish fillets in flour before dipping in the egg mixture, then coat in potato flakes. For extra crispiness, repeat the process of dipping in egg and potato flakes.",
+          "operation": "add",
+          "line_index": 3
+        },
+        {
+          "type": "instruction",
+          "edit_type": "technique_change",
+          "reasoning": "Update cooking time for tilapia fillets based on reviewer's experience",
+          "from_text": "Fry fish fillets in oil for 3 to 4 minutes on each side, or until golden brown.",
+          "to_text": "Fry tilapia fillets in oil for 2 minutes on each side, or until golden brown.",
+          "operation": "replace",
+          "line_index": 4
+        }
+      ]
+    }
+  ],
+  "enhancement_summary": {
+    "total_changes": 4,
+    "change_types": [
+      "addition",
+      "technique_change",
+      "ingredient_substitution"
+    ],
+    "expected_impact": "Reviewer added garlic powder to the egg/mustard mixture for extra flavor; Reviewer substituted tilapia for sole due to availability, adjusted cooking time accordingly; Reviewer suggests flouring the fish before dipping in egg mixture for better coating adhesion (and 1 more improvements)"
+  },
+  "description": "Delicious sole dredged in an egg and mustard mixture, then potato flakes; pan fried to a golden brown. Serve with lemon wedges and tartar sauce.",
+  "servings": "4",
+  "prep_time": null,
+  "cook_time": null,
+  "total_time": null,
+  "created_at": "2026-06-02T15:28:35.987247",
+  "pipeline_version": "1.0.0"
+}

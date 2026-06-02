@@ -1,0 +1,217 @@
+{
+  "url": "https://www.allrecipes.com/recipe/223511/deep-fried-corn-meal-sticks-sorullitos-de-maiz-with-dipping-sauce/",
+  "scraped_at": "2026-06-02T15:27:46.853995",
+  "recipe_id": "223511",
+  "title": "Deep Fried Corn Meal Sticks (Sorullitos de Maiz) with Dipping Sauce",
+  "description": "Puerto Rican-style corn fritters are just a little sweet and just a little salty. Deep fry them to a golden crisp brown and serve with an easy dipping sauce for a fun snack or appetizer.",
+  "rating": {
+    "value": "4.9",
+    "count": "47"
+  },
+  "preptime": "PT30M",
+  "cooktime": "PT30M",
+  "totaltime": "PT60M",
+  "servings": "6",
+  "ingredients": [
+    "2 cups water",
+    "3 tablespoons white sugar, or more to taste",
+    "1 tablespoon butter",
+    "1 teaspoon salt",
+    "1.5 cups cornmeal, or as needed",
+    "3 cups vegetable oil for frying",
+    "vegetable oil",
+    "0.5 cup mayonnaise, or to taste",
+    "0.25 cup ketchup",
+    "1 pinch garlic salt, or to taste"
+  ],
+  "instructions": [
+    "Bring water to a boil in a saucepan. Stir in sugar, butter, and salt; cook until sugar dissolved. Reduce heat to low; whisk in 1 cup cornmeal until smooth. Stir in remaining 1/2 cup cornmeal to make a very thick, workable dough.",
+    "Heat 3 cups vegetable oil in a deep fryer or large saucepan to 350 degrees F (175 degrees C).",
+    "Meanwhile, grease your hands well with 2 teaspoons vegetable oil. Scoop about 3 tablespoons cornmeal dough; roll into a ball, then shape into a 3-inch long stick about 1/2-inch wide. Repeat with remaining dough, oiling your hands as needed.",
+    "Deep fry cornmeal sticks, working in batches of 3 or 4 at a time, until golden brown. Drain on paper towels and keep warm.",
+    "Whisk mayonnaise, ketchup, and garlic salt together in a bowl until well combined. Serve cornmeal sticks with dipping sauce."
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": "421 kcal",
+    "carbohydrateContent": "37 g",
+    "cholesterolContent": "12 mg",
+    "fiberContent": "1 g",
+    "proteinContent": "3 g",
+    "saturatedFatContent": "5 g",
+    "sodiumContent": "676 mg",
+    "sugarContent": "9 g",
+    "fatContent": "30 g",
+    "unsaturatedFatContent": "0 g"
+  },
+  "author": "[{'@type': 'Person', 'name': 'Marisa Nicholls'}]",
+  "categories": [
+    "Appetizer",
+    "Snack"
+  ],
+  "featured_tweaks": [
+    {
+      "review_rank": 0,
+      "text": "Absolutely fabulous!! I have been making sorullitos for years and experimented with the proportions with varying results, so I wanted to try this recipe. I am very happy to report that the particular ratio of ingredients here is SPOT ON. If you are looking for a sorullito that is crunchy outside and tender soft on the inside, with a taste on the sweeter side, THIS IS IT!!! (but of course you can reduce the sugar and increase the salt a bit if you want it to have more of a savory taste). I did put a stick of extra sharp cheddar cheese inside of each piece for an extra YUMMMM Thanks for the recipe Marisa!!!",
+      "username": "Milly Suazo-Martinez",
+      "rating": 5,
+      "is_most_helpful_positive": true,
+      "has_modification": true
+    }
+  ],
+  "reviews": [
+    {
+      "review_rank": 0,
+      "text": "Absolutely fabulous!! I have been making sorullitos for years and experimented with the proportions with varying results, so I wanted to try this recipe. I am very happy to report that the particular ratio of ingredients here is SPOT ON. If you are looking for a sorullito that is crunchy outside and tender soft on the inside, with a taste on the sweeter side, THIS IS IT!!! (but of course you can reduce the sugar and increase the salt a bit if you want it to have more of a savory taste). I did put a stick of extra sharp cheddar cheese inside of each piece for an extra YUMMMM Thanks for the recipe Marisa!!!",
+      "username": "Milly Suazo-Martinez",
+      "rating": 5,
+      "is_most_helpful_positive": true,
+      "has_modification": true
+    },
+    {
+      "review_rank": 1,
+      "text": "Perfect. Both my husband and I are Puerto Rican so we put our own spin on it. We added a 1/2 cup of shredded cheddar and stuffed a few with a mozzarella stick cut long ways into quarters and American cheese w/ham. Just be careful giving the American cheese ones to the kiddos it’s gooey and delicious but the cheese will burn you. (Let sit for a minute or two)",
+      "username": "Angie V-K",
+      "rating": 5,
+      "date": "2021-02-16T03:41:11.977Z"
+    },
+    {
+      "review_rank": 2,
+      "text": "We made this two ways. We made the \"dough\" and added mixed cheeses and rolled them up like popcorn chicken. Also made them plain and at the end rolled them in cinnamon and sugar. Kids loved them!",
+      "username": "Hart",
+      "rating": 5,
+      "date": "2016-05-15T21:19:38.907Z"
+    },
+    {
+      "review_rank": 3,
+      "text": "My sister makes these all the time, but it's the only time we get to eat them! My daughter begged me to make some so I took a chance with this recipe and not only was it simple they are perfect crunchy outside and moist inside. I also added 1tsp vanilla extract and 1tbls extra sugar, I also added a small piece of cheddar cheese to the center of some and they were great! Thanks for sharing recipe.",
+      "username": "daisy430",
+      "rating": 5,
+      "date": "2015-01-12T07:54:13.820Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 4,
+      "text": "Finally a good recipe! Now I can make them at home whenever I get a craving since there isn't anywhere to get real sorullitos in my area. I added an extra tablespoon of butter this time and it made the dough a little more manageable. The more it cools though the harder it is to keep its shape so work quickly as soon as it's cool enough to handle. Filled with cheese and served with my own mayo-ketchup which me make with a lot more than just a hint of garlic powder ??",
+      "username": "PattyCake",
+      "rating": 5,
+      "date": "2017-04-07T17:56:01.113Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 5,
+      "text": "Best recipe for sorullos I have ever done. I just add 1 more tbsp of sugar because I like them sweeter and i add \"bacalao guisado con tomate\" inside of some of them. Delicious!",
+      "username": "Exelkageid",
+      "rating": 5,
+      "date": "2015-11-26T16:47:19.253Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 6,
+      "text": "We had never heard of these until I spotted this recipe, so I have no idea if mine came out like the authentic ones or not. But that doesn’t really matter because, authentic or not, we enjoyed them. Mine came out closer to 1” diameter and 4 Inches long, and at that size I got 17 of them out of this recipe. They tasted great dipped in the dipping sauce, which did not sound nearly as good as it was. Glad I made it! We also tried them rolled in cinnamon sugar, and they were a lot like a cinnamon donut. Yummy!",
+      "username": "Marcia",
+      "rating": 5,
+      "date": "2018-03-09T23:51:26.540Z"
+    },
+    {
+      "review_rank": 7,
+      "text": "I added a little more sugar, because I liked them to taste sweeter.",
+      "username": "asanabriazayas",
+      "rating": 5,
+      "date": "2025-03-22T16:58:47.200Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 8,
+      "text": "I just put a little bit of American cheese in the in the middle. 😘😋😋",
+      "username": "ZippyWhisk6745",
+      "rating": 5,
+      "date": "2025-02-24T19:15:45.263Z"
+    },
+    {
+      "review_rank": 9,
+      "text": "Ive been wanting to learn how to make these for so long and this recipe was great! Next time i would add a tiny bit more sugar for my family's preference and i also added a small piece of sharp cheddar cheese because thats how im used to having them. I will definitely always use this recipe!! Thanks for sharing :)",
+      "username": "ummibrahim10",
+      "rating": 5,
+      "date": "2015-05-08T17:31:17.743Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 10,
+      "text": "We used vegan mayo instead of the regular stuff. Other than that we didn't change a thing and it was great.",
+      "username": "Maggie",
+      "rating": 5,
+      "date": "2014-12-04T20:05:05.543Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 11,
+      "text": "Love it",
+      "username": "SallyA",
+      "rating": 5,
+      "date": "2025-09-07T19:24:44.693Z"
+    },
+    {
+      "review_rank": 12,
+      "text": "My mother use to make them when i was a kid. Yummy. Ate them as is and never could have enough! I never added cheese nor ketchup and mayo as a dip, yuk. ADDING CHEESE makes them mozzarella sticks. Takes them away from the Puerto Rican authenticity.",
+      "username": "BriskBroth6405",
+      "rating": 5,
+      "date": "2025-04-27T18:08:54.354Z"
+    },
+    {
+      "review_rank": 13,
+      "text": "Reminds me of the ones my Mom made growing up 🥲",
+      "username": "Xavier Diaz",
+      "rating": 5,
+      "date": "2024-01-27T16:35:18.338Z"
+    },
+    {
+      "review_rank": 14,
+      "text": "I always use your recipes as they are as close to home recipes from home.",
+      "username": "guz2man47",
+      "rating": 5,
+      "date": "2022-02-06T15:42:19.468Z"
+    },
+    {
+      "review_rank": 15,
+      "text": "Perfect recipe a s so simple! Took me back to my childhood.",
+      "username": "Lsue",
+      "rating": 5,
+      "date": "2021-05-19T19:09:10.907Z"
+    },
+    {
+      "review_rank": 16,
+      "text": "Very easy to make didn’t have to tweak it and so delicious",
+      "username": "Elizabeth Morales",
+      "rating": 5,
+      "date": "2020-09-10T00:15:00.167Z"
+    },
+    {
+      "review_rank": 17,
+      "text": "Very tasty",
+      "username": "KANDIYOHIV",
+      "rating": 5,
+      "date": "2020-08-17T03:36:41.100Z"
+    },
+    {
+      "review_rank": 18,
+      "text": "Thank you! love them",
+      "username": "Jose A Guadalupe",
+      "rating": 5,
+      "date": "2020-03-30T17:01:57.470Z"
+    },
+    {
+      "review_rank": 19,
+      "text": "My father used to make these when I was little. He kind of lost his touch making them and he stopped. So I decided to surprise the family and this recipe was perfect! Now I wonder how they would taste if I baked them because we can't have too many fried foods. But as a little appetizer or snack this was great. Brought back good memories of my childhood.",
+      "username": "Team Cupcakes",
+      "rating": 5,
+      "date": "2017-11-20T01:17:17.543Z"
+    },
+    {
+      "text": "I just made them. My one year old loved it and so did I. I will definitely be making them again. So easy. I followed the recipe exactly the way it is.",
+      "rating": 5,
+      "date": "02/23/2015",
+      "review_rank": 20
+    }
+  ]
+}

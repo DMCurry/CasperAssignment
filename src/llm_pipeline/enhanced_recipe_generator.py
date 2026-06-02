@@ -61,7 +61,10 @@ class EnhancedRecipeGenerator:
             SourceReview with attribution information
         """
         return SourceReview(
-            text=review.text, reviewer=review.username, rating=review.rating
+            text=review.text,
+            reviewer=review.username,
+            rating=review.rating,
+            review_rank=review.review_rank,
         )
 
     def create_modification_applied(

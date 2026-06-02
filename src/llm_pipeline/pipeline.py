@@ -92,26 +92,76 @@ class LLMAnalysisPipeline:
         """
         Parse raw review data into Review objects.
 
+        Merges reviews and featured_tweaks, deduplicating by text prefix and
+        preserving the best (lowest) review_rank when duplicates appear.
+
         Args:
             recipe_data: Raw recipe data containing reviews
 
         Returns:
             List of Review objects
         """
-        reviews = []
-        raw_reviews = recipe_data.get("reviews", [])
+        reviews_by_key: Dict[str, Review] = {}
 
-        for review_data in raw_reviews:
-            if review_data.get("text"):
-                review = Review(
-                    text=review_data["text"],
-                    rating=review_data.get("rating"),
-                    username=review_data.get("username"),
-                    has_modification=review_data.get("has_modification", False),
-                )
-                reviews.append(review)
+        def review_key(text: str) -> str:
+            return text[:100].strip().lower()
 
-        return reviews
+        def add_or_update(raw: Dict[str, Any]) -> None:
+            text = raw.get("text")
+            if not text:
+                return
+
+            key = review_key(text)
+            incoming = Review(
+                text=text,
+                rating=raw.get("rating"),
+                username=raw.get("username"),
+                has_modification=raw.get("has_modification", False),
+                review_rank=raw.get("review_rank"),
+                is_most_helpful_positive=raw.get("is_most_helpful_positive")
+                or raw.get("is_featured", False)
+                or raw.get("review_rank") == 0,
+                is_featured=raw.get("is_featured", False)
+                or raw.get("is_most_helpful_positive", False),
+            )
+
+            if key not in reviews_by_key:
+                reviews_by_key[key] = incoming
+                return
+
+            existing = reviews_by_key[key]
+            merged_rank = incoming.review_rank
+            if merged_rank is None:
+                merged_rank = existing.review_rank
+            elif existing.review_rank is not None:
+                merged_rank = min(existing.review_rank, merged_rank)
+
+            reviews_by_key[key] = Review(
+                text=text,
+                rating=incoming.rating or existing.rating,
+                username=incoming.username or existing.username,
+                has_modification=existing.has_modification or incoming.has_modification,
+                review_rank=merged_rank,
+                is_most_helpful_positive=(
+                    existing.is_most_helpful_positive
+                    or incoming.is_most_helpful_positive
+                    or merged_rank == 0
+                ),
+                is_featured=existing.is_featured or incoming.is_featured,
+            )
+
+        for review_data in recipe_data.get("reviews", []):
+            add_or_update(review_data)
+        for review_data in recipe_data.get("featured_tweaks", []):
+            add_or_update(review_data)
+
+        parsed_reviews = list(reviews_by_key.values())
+        parsed_reviews.sort(
+            key=lambda review: (
+                review.review_rank if review.review_rank is not None else 9999
+            )
+        )
+        return parsed_reviews
 
     def process_single_recipe(
         self,

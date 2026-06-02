@@ -1,0 +1,73 @@
+{
+  "recipe_id": "23434_enhanced",
+  "original_recipe_id": "23434",
+  "title": "Seven Layer Dinner (Community Enhanced)",
+  "ingredients": [
+    "3 potatoes, thinly sliced",
+    "3 carrots, thinly sliced",
+    "1 large onion, thinly sliced",
+    "0.5 cup uncooked long-grain rice",
+    "2 (8 ounce) cans peas, with liquid",
+    "1 pound pork sausage",
+    "1 can mushrooms, dusting of sage and garlic powder",
+    "1 (10.75 ounce) can condensed tomato soup",
+    "1 (10.75 ounce) can water",
+    "salt and pepper to taste"
+  ],
+  "instructions": [
+    "Preheat the oven to 350 degrees F (175 degrees C). Butter a large casserole dish.",
+    "Layer potatoes, carrots, and onions in the prepared casserole dish. Sprinkle uncooked rice over vegetables. Add peas (with liquid); arrange pork sausage on top.",
+    "Dilute 1 can tomato soup with 1 can water in a large measuring cup; pour over sausage. Season with salt and black pepper.",
+    "Bake covered at 275 degrees for 2 hours."
+  ],
+  "modifications_applied": [
+    {
+      "source_review": {
+        "text": "Really enjoyed this! Same ingredients but added can of mushrooms and a dusting of sage and garlic powder when assembled. I partially browned the sausage, still a little pink, and drained on paper towels to reduce the fat. Also had to be away from home a couple of hours so baked covered casserole on 275 degrees for 2 hrs. Probably will slice potatoes and carrots a little thicker next time but rice was perfect. May also use frozen stir fry veggies as a variation. Can you say, \"Pot Luck Dish\"?",
+        "reviewer": "Judy",
+        "rating": 4,
+        "review_rank": 1
+      },
+      "modification_types": [
+        "addition",
+        "technique_change"
+      ],
+      "summary_reasoning": "Reviewer added a can of mushrooms and a dusting of sage and garlic powder for extra flavor; Reviewer adjusted baking temperature and time to accommodate being away from home",
+      "changes_made": [
+        {
+          "type": "ingredient",
+          "edit_type": "addition",
+          "reasoning": "Reviewer added a can of mushrooms and a dusting of sage and garlic powder for extra flavor",
+          "from_text": "",
+          "to_text": "1 can mushrooms, dusting of sage and garlic powder",
+          "operation": "add",
+          "line_index": 6
+        },
+        {
+          "type": "instruction",
+          "edit_type": "technique_change",
+          "reasoning": "Reviewer adjusted baking temperature and time to accommodate being away from home",
+          "from_text": "Bake in the preheated oven, covered, for 1 hour. Uncover and continue baking 1 hour more.",
+          "to_text": "Bake covered at 275 degrees for 2 hours.",
+          "operation": "replace",
+          "line_index": 3
+        }
+      ]
+    }
+  ],
+  "enhancement_summary": {
+    "total_changes": 2,
+    "change_types": [
+      "addition",
+      "technique_change"
+    ],
+    "expected_impact": "Reviewer added a can of mushrooms and a dusting of sage and garlic powder for extra flavor; Reviewer adjusted baking temperature and time to accommodate being away from home"
+  },
+  "description": "This seven-layer dinner casserole recipe includes potatoes, carrots, and onions, plus long-grain rice and peas baked with sausage in a tomato sauce.",
+  "servings": "5",
+  "prep_time": null,
+  "cook_time": null,
+  "total_time": null,
+  "created_at": "2026-06-02T15:28:26.348313",
+  "pipeline_version": "1.0.0"
+}
