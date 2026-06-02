@@ -6,9 +6,10 @@
     "1 cup butter, softened",
     "1 cup white sugar",
     "1 cup packed brown sugar",
-    "2 eggs + 1 egg yolk",
+    "2 eggs",
     "2 teaspoons vanilla extract",
     "1 teaspoon baking soda",
+    "1/2 teaspoon cream of tartar",
     "2 teaspoons hot water",
     "0.5 teaspoon salt",
     "3 cups all-purpose flour",
@@ -17,45 +18,46 @@
   ],
   "instructions": [
     "Gather your ingredients, making sure your butter is softened, and your eggs are room temperature.",
-    "Preheat the oven to 350 degrees F (175 degrees C). Beat butter, white sugar, and brown sugar with an electric mixer in a large bowl until smooth.",
+    "Preheat the oven to 350 degrees F (175 degrees C). Beat butter, white sugar, and brown sugar together in a large bowl with an electric mixer until smooth and creamy.",
     "Beat in eggs, one at a time, then stir in vanilla.",
-    "Dissolve baking soda in hot water. Add to batter along with salt.",
-    "Stir in flour, chocolate chips, and walnuts.",
-    "Drop spoonfuls of dough 2 inches apart onto ungreased baking sheets.",
-    "Use an ice cream scoop to create larger cookies. Place dough balls 2 inches apart onto ungreased baking sheets.",
-    "Bake in the preheated oven until edges are nicely browned, about 10 minutes.",
-    "Cool on the baking sheets briefly before removing to a wire rack to cool completely.",
+    "Dissolve baking soda and cream of tartar in hot water; add to batter along with salt and mix until combined.",
+    "Stir in flour, chocolate chips, and walnuts until a soft dough forms.",
+    "Drop rounded spoonfuls of cookie dough 2 inches apart onto ungreased baking sheets.",
+    "Bake in the preheated oven until edges are lightly browned, about 10 minutes.",
+    "Cool on the baking sheets briefly before transferring to a wire rack to cool completely.",
     "Store in an airtight container or serve immediately and enjoy!"
   ],
   "modifications_applied": [
     {
       "source_review": {
-        "text": "I used an ice cream scoop, that made 16 big cookies. I did add an additional egg yolk to help keep the cookie chewy.They turned out fantastic.",
-        "reviewer": null,
-        "rating": 5
+        "text": "vERRY eXXCELLENT cOOOKIE! I worked 10 years as a baker and the recipe we used at the bake shop was similar except this recipe didn't call for any cream of tartar, so I added it to my version. I added 1/2 tspn. What it does is make the cookie crack better when baking which gives it a better appeal in appearance as appose to that smooth top looking cookie which I don't like. It doesn't do anything for flavor so if you don't care about whether its smooth or cracked then don't bother with the suggestion.",
+        "reviewer": "Chuck Sampson",
+        "rating": 5,
+        "review_rank": 0
       },
       "modification_types": [
-        "addition"
+        "addition",
+        "technique_change"
       ],
-      "summary_reasoning": "Reviewer added an extra egg yolk to enhance chewiness of the cookies; Reviewer used an ice cream scoop to create larger cookies for a different texture and appearance",
+      "summary_reasoning": "Reviewer added cream of tartar to improve cookie appearance by creating a cracked top; Update mixing step to include cream of tartar addition",
       "changes_made": [
         {
           "type": "ingredient",
           "edit_type": "addition",
-          "reasoning": "Reviewer added an extra egg yolk to enhance chewiness of the cookies",
-          "from_text": "2 eggs",
-          "to_text": "2 eggs + 1 egg yolk",
-          "operation": "replace",
-          "line_index": 3
+          "reasoning": "Reviewer added cream of tartar to improve cookie appearance by creating a cracked top",
+          "from_text": "",
+          "to_text": "1/2 teaspoon cream of tartar",
+          "operation": "add",
+          "line_index": 6
         },
         {
           "type": "instruction",
-          "edit_type": "addition",
-          "reasoning": "Reviewer used an ice cream scoop to create larger cookies for a different texture and appearance",
-          "from_text": "",
-          "to_text": "Use an ice cream scoop to create larger cookies. Place dough balls 2 inches apart onto ungreased baking sheets.",
-          "operation": "add",
-          "line_index": 6
+          "edit_type": "technique_change",
+          "reasoning": "Update mixing step to include cream of tartar addition",
+          "from_text": "Dissolve baking soda in hot water; add to batter along with salt and mix until combined.",
+          "to_text": "Dissolve baking soda and cream of tartar in hot water; add to batter along with salt and mix until combined.",
+          "operation": "replace",
+          "line_index": 3
         }
       ]
     }
@@ -63,15 +65,16 @@
   "enhancement_summary": {
     "total_changes": 2,
     "change_types": [
-      "addition"
+      "addition",
+      "technique_change"
     ],
-    "expected_impact": "Reviewer added an extra egg yolk to enhance chewiness of the cookies; Reviewer used an ice cream scoop to create larger cookies for a different texture and appearance"
+    "expected_impact": "Reviewer added cream of tartar to improve cookie appearance by creating a cracked top; Update mixing step to include cream of tartar addition"
   },
   "description": "This classic chocolate chip cookie recipe makes deliciously buttery cookies with crisp edges, chewy middles, and gooey chocolate chips in every bite.",
   "servings": "48",
   "prep_time": null,
   "cook_time": null,
   "total_time": null,
-  "created_at": "2026-06-02T13:17:32.371199",
+  "created_at": "2026-06-02T15:28:10.121570",
   "pipeline_version": "1.0.0"
 }

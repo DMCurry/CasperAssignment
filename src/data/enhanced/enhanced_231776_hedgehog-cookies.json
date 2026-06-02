@@ -1,0 +1,67 @@
+{
+  "recipe_id": "231776_enhanced",
+  "original_recipe_id": "231776",
+  "title": "Hedgehog Cookies (Community Enhanced)",
+  "ingredients": [
+    "4 cups all-purpose flour",
+    "0.75 teaspoon baking powder",
+    "0.5 teaspoon baking soda",
+    "0.5 teaspoon salt",
+    "1.25 cups white sugar",
+    "1 cup butter-flavored shortening",
+    "0.25 cup honey",
+    "2 eggs",
+    "1 tablespoon vanilla extract",
+    "1 cup pecans",
+    "1 cup chocolate chips"
+  ],
+  "instructions": [
+    "Mix flour, baking powder, baking soda, and salt in a bowl. Whisk sugar, shortening, corn syrup, eggs, and vanilla extract in a separate bowl. Stir sugar mixture into flour mixture until just combined. Refrigerate dough until chilled, 30 minutes to 1 hour.",
+    "Preheat oven to 350 degrees F (175 degrees C).",
+    "Scoop cookie dough using a cookie scoop or 1 tablespoon so all the cookies are uniform; shape dough into teardrop-shaped cookies. Flatten the pointed side of each cookie to form the &#39;face&#39;. Arrange cookies on baking sheets.",
+    "Bake in the preheated oven until golden, 10 to 12 minutes. Cool on the baking sheets for 10 minutes before removing to cool completely on a wire rack.",
+    "Pulse pecans in a food processor until finely chopped; transfer to a bowl.",
+    "Melt chocolate chips in the top of a double boiler over simmering water, stirring frequently and scraping down the sides with a rubber spatula to avoid scorching.",
+    "Dip the top of each cookie in the melted chocolate, spreading to fully coat the &#39;body&#39; of each hedgehog. Press cookies, chocolate-side down, into the ground pecans forming the &#39;fur&#39;. Arrange cookies on a sheet of waxed paper to set, about 30 minutes.",
+    "Transfer the remaining melted chocolate to a piping bag or plastic bag with a corner snipped. Pipe chocolate onto the pointed end of each cookie for eyes and a nose."
+  ],
+  "modifications_applied": [
+    {
+      "source_review": {
+        "text": "These cookies turned out delicious. I used honey instead of corn syrup with no ill effects. Quick tip-make sure you make them nice and long, extra pointy when you shape them, and keep them cold. =)",
+        "reviewer": "Cori Hanson",
+        "rating": 5,
+        "review_rank": 0
+      },
+      "modification_types": [
+        "ingredient_substitution"
+      ],
+      "summary_reasoning": "Reviewer substituted honey for corn syrup for a potentially healthier alternative",
+      "changes_made": [
+        {
+          "type": "ingredient",
+          "edit_type": "ingredient_substitution",
+          "reasoning": "Reviewer substituted honey for corn syrup for a potentially healthier alternative",
+          "from_text": "0.25 cup corn syrup",
+          "to_text": "0.25 cup honey",
+          "operation": "replace",
+          "line_index": 6
+        }
+      ]
+    }
+  ],
+  "enhancement_summary": {
+    "total_changes": 1,
+    "change_types": [
+      "ingredient_substitution"
+    ],
+    "expected_impact": "Reviewer substituted honey for corn syrup for a potentially healthier alternative"
+  },
+  "description": "Hedgehog cookies are decorated with melted chocolate and chopped pecans for the &#39;fur&#39; for a fun treat the kids will love helping create.",
+  "servings": "24",
+  "prep_time": null,
+  "cook_time": null,
+  "total_time": null,
+  "created_at": "2026-06-02T15:28:22.329059",
+  "pipeline_version": "1.0.0"
+}

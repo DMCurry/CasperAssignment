@@ -1,12 +1,13 @@
 {
   "pipeline_summary": {
-    "recipes_processed": 4,
-    "total_modifications_applied": 4,
-    "total_changes_made": 9,
+    "recipes_processed": 9,
+    "total_modifications_applied": 9,
+    "total_changes_made": 25,
     "change_type_distribution": {
-      "addition": 3,
-      "ingredient_substitution": 2,
-      "quantity_adjustment": 1
+      "addition": 8,
+      "technique_change": 6,
+      "quantity_adjustment": 2,
+      "ingredient_substitution": 6
     }
   },
   "enhanced_recipes": [
@@ -16,22 +17,24 @@
       "modifications_count": 1,
       "changes_count": 2,
       "change_types": [
-        "addition"
+        "addition",
+        "technique_change"
       ]
     },
     {
-      "recipe_id": "144299_enhanced",
-      "title": "Nikujaga (Japanese-Style Meat and Potatoes) (Community Enhanced)",
+      "recipe_id": "18011_enhanced",
+      "title": "Marinade for Steak (Community Enhanced)",
       "modifications_count": 1,
       "changes_count": 4,
       "change_types": [
-        "ingredient_substitution",
-        "quantity_adjustment"
+        "addition",
+        "quantity_adjustment",
+        "ingredient_substitution"
       ]
     },
     {
-      "recipe_id": "19117_enhanced",
-      "title": "Spicy Apple Cake (Community Enhanced)",
+      "recipe_id": "223511_enhanced",
+      "title": "Deep Fried Corn Meal Sticks (Sorullitos de Maiz) with Dipping Sauce (Community Enhanced)",
       "modifications_count": 1,
       "changes_count": 1,
       "change_types": [
@@ -39,12 +42,66 @@
       ]
     },
     {
-      "recipe_id": "77935_enhanced",
-      "title": "Creamy Sweet Potato With Ginger Soup (Community Enhanced)",
+      "recipe_id": "231776_enhanced",
+      "title": "Hedgehog Cookies (Community Enhanced)",
+      "modifications_count": 1,
+      "changes_count": 1,
+      "change_types": [
+        "ingredient_substitution"
+      ]
+    },
+    {
+      "recipe_id": "23434_enhanced",
+      "title": "Seven Layer Dinner (Community Enhanced)",
       "modifications_count": 1,
       "changes_count": 2,
       "change_types": [
         "addition",
+        "technique_change"
+      ]
+    },
+    {
+      "recipe_id": "238339_enhanced",
+      "title": "Simple Cantaloupe Smoothie (Community Enhanced)",
+      "modifications_count": 1,
+      "changes_count": 4,
+      "change_types": [
+        "addition",
+        "technique_change",
+        "quantity_adjustment",
+        "ingredient_substitution"
+      ]
+    },
+    {
+      "recipe_id": "238431_enhanced",
+      "title": "Midnight Nutella Dip (Community Enhanced)",
+      "modifications_count": 1,
+      "changes_count": 4,
+      "change_types": [
+        "addition",
+        "technique_change",
+        "ingredient_substitution"
+      ]
+    },
+    {
+      "recipe_id": "24507_enhanced",
+      "title": "Crispy Fish Fillets (Community Enhanced)",
+      "modifications_count": 1,
+      "changes_count": 4,
+      "change_types": [
+        "addition",
+        "technique_change",
+        "ingredient_substitution"
+      ]
+    },
+    {
+      "recipe_id": "80803_enhanced",
+      "title": "Wicked Good Veggie Chili (Community Enhanced)",
+      "modifications_count": 1,
+      "changes_count": 3,
+      "change_types": [
+        "addition",
+        "technique_change",
         "ingredient_substitution"
       ]
     }

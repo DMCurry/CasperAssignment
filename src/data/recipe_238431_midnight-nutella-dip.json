@@ -1,0 +1,113 @@
+{
+  "url": "https://www.allrecipes.com/recipe/238431/midnight-nutella-dip/",
+  "scraped_at": "2026-06-02T15:27:58.739459",
+  "recipe_id": "238431",
+  "title": "Midnight Nutella Dip",
+  "description": "This mixture of everyone&#39;s favorite chocolate-hazelnut spread, Nutella, honey, milk, and vanilla is a tempting midnight snack.",
+  "rating": {
+    "value": "4.8",
+    "count": "10"
+  },
+  "preptime": "PT5M",
+  "cooktime": "PT1M",
+  "totaltime": "PT8M",
+  "servings": "4",
+  "ingredients": [
+    "5 tablespoons chocolate-hazelnut spread (such as Nutella®)",
+    "2 tablespoons milk",
+    "1 teaspoon honey",
+    "0.25 teaspoon vanilla extract"
+  ],
+  "instructions": [
+    "Combine chocolate-hazelnut spread, milk, honey, and vanilla extract in a small microwave-safe container.",
+    "Heat in microwave oven for 1 minute.",
+    "Stir the dip with a toothpick until somewhat smooth; let cool for 2 minutes before eating."
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": "110 kcal",
+    "carbohydrateContent": "14 g",
+    "cholesterolContent": "1 mg",
+    "proteinContent": "2 g",
+    "saturatedFatContent": "1 g",
+    "sodiumContent": "22 mg",
+    "sugarContent": "13 g",
+    "fatContent": "6 g",
+    "unsaturatedFatContent": "0 g"
+  },
+  "author": "[{'@type': 'Person', 'name': 'Kahlista'}]",
+  "categories": [
+    "Appetizer",
+    "Snack"
+  ],
+  "featured_tweaks": [
+    {
+      "review_rank": 0,
+      "text": "Ok, so honestly, I didn't follow recipe but used almost the ingredients listed. I just added nutella, and honey and half and half and vanilla extract. I just tasted as I went. I feel like I added more half and half than the ratio listed to get a smooth and thinner sauce. I used it for beignet dipping and it was AMAZING. Lots of love from the hubby and all my friends that tried it. Heated in microwave and reheated well. YUM! A keeper.",
+      "username": "mandydaile",
+      "rating": 5,
+      "is_most_helpful_positive": true,
+      "has_modification": true
+    }
+  ],
+  "reviews": [
+    {
+      "review_rank": 0,
+      "text": "Ok, so honestly, I didn't follow recipe but used almost the ingredients listed. I just added nutella, and honey and half and half and vanilla extract. I just tasted as I went. I feel like I added more half and half than the ratio listed to get a smooth and thinner sauce. I used it for beignet dipping and it was AMAZING. Lots of love from the hubby and all my friends that tried it. Heated in microwave and reheated well. YUM! A keeper.",
+      "username": "mandydaile",
+      "rating": 5,
+      "is_most_helpful_positive": true,
+      "has_modification": true
+    },
+    {
+      "review_rank": 1,
+      "text": "Absolutely love it 😍",
+      "username": "LankyStove6584",
+      "rating": 5,
+      "date": "2023-12-11T09:17:59.794Z"
+    },
+    {
+      "review_rank": 2,
+      "text": "SO GOOD! We ate it with peaches and apples which were both delicious but the apples were the best. I microwaved it and it started bubbling over 40 seconds in so I stopped it and it still came out fine. I recommend this recipe if you are craving a quick, sweet snack.",
+      "username": "HotTamale",
+      "rating": 5,
+      "date": "2023-07-21T22:27:50.038Z"
+    },
+    {
+      "review_rank": 3,
+      "text": "Kids loved it! It’s so easy to whip up for an after school snack with some fruit. I will definitely make this again!",
+      "username": "savagekm",
+      "rating": 5,
+      "date": "2021-10-01T21:34:36.043Z",
+      "has_modification": true
+    },
+    {
+      "review_rank": 4,
+      "text": "OMG! My kiddo made this tonight. It is addictive. It is BEYOND Nutella. We both like Nutella but this is far and above. I am not a sweets person. I don’t eat much chocolate. But I could not stop licking the spoon on this.",
+      "username": "sweetsuzannah",
+      "rating": 5,
+      "date": "2020-11-03T08:07:38.207Z"
+    },
+    {
+      "review_rank": 5,
+      "text": "Followed the recipe exactly. It doesn't taste bad but it just tastes like I'm eating Nutella by itself. I also let it cool like the recipe said but it thickened up too much to dip anything in it. This recipe is a good start but I think it could be improved.",
+      "username": "Kristina Perales",
+      "rating": 3,
+      "date": "2020-09-14T02:26:27.680Z"
+    },
+    {
+      "review_rank": 6,
+      "text": "Awesome. Made it with some homeamade pretzel ans kids loved it.",
+      "username": "Francois Sylvain",
+      "rating": 5,
+      "date": "2017-10-09T22:35:08.527Z"
+    },
+    {
+      "review_rank": 7,
+      "text": "Recipe worked great - no changes. I made homemade zeppole and dipped in this. Was great!",
+      "username": "gmthomson",
+      "rating": 5,
+      "date": "2017-01-01T20:48:02.077Z"
+    }
+  ]
+}

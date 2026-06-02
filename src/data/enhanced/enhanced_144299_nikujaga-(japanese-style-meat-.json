@@ -16,7 +16,7 @@
     "1 onion, chopped"
   ],
   "instructions": [
-    "Put the snow peas in a small saucepan with enough water to cover; bring to a boil and immediately remove from heat. Drain and set aside.",
+    "If using beef broth/stock instead of dashi, prepare the snow peas as instructed above.",
     "Heat the oil in a large skillet over medium heat; cook the beef in the oil until browned. Add the potatoes; cook and stir until soft, 5 to 7 minutes. Stir the dashi soup, soy sauce, sake, and sugar into the mixture; simmer for 10 minutes.",
     "Reduce heat to low and scatter the chopped onion over the mixture; allow to simmer until the liquid is nearly completely evaporated, about 15 minutes more. Top the mixture with the snow peas to serve."
   ],
@@ -25,13 +25,15 @@
       "source_review": {
         "text": "Overall it was pretty good but the measurements were way off. HAS to be a typo. 1/4lb of meat to serve 4??? I used a lil over 1lb and it even then it was swimming in the broth. After following the recipe, i added extra soy and sugar only because i thought the flavor was a little on the lite side. Overall good.** If you cant find dashi, beef broth/stock works just fine. My japanese mom happen to have some so i was able to get some from her.",
         "reviewer": null,
-        "rating": 4
+        "rating": 4,
+        "helpful_count": 0
       },
       "modification_types": [
+        "quantity_adjustment",
         "ingredient_substitution",
-        "quantity_adjustment"
+        "addition"
       ],
-      "summary_reasoning": "Reviewer increased meat amount for better balance with broth; Reviewer adjusted soy sauce and sugar for stronger flavor; Reviewer suggests using beef broth/stock as an alternative to dashi",
+      "summary_reasoning": "Reviewer increased meat amount for better balance with broth; Reviewer adjusted soy sauce and sugar for stronger flavor; Reviewer suggests using beef broth/stock as an alternative to dashi; Reviewer recommends using beef broth/stock as an alternative to dashi",
       "changes_made": [
         {
           "type": "ingredient",
@@ -68,23 +70,33 @@
           "to_text": "2 cups beef broth/stock",
           "operation": "replace",
           "line_index": 4
+        },
+        {
+          "type": "instruction",
+          "edit_type": "addition",
+          "reasoning": "Reviewer recommends using beef broth/stock as an alternative to dashi",
+          "from_text": "Put the snow peas in a small saucepan with enough water to cover; bring to a boil and immediately remove from heat. Drain and set aside.",
+          "to_text": "If using beef broth/stock instead of dashi, prepare the snow peas as instructed above.",
+          "operation": "replace",
+          "line_index": 0
         }
       ]
     }
   ],
   "enhancement_summary": {
-    "total_changes": 4,
+    "total_changes": 5,
     "change_types": [
+      "quantity_adjustment",
       "ingredient_substitution",
-      "quantity_adjustment"
+      "addition"
     ],
-    "expected_impact": "Reviewer increased meat amount for better balance with broth; Reviewer adjusted soy sauce and sugar for stronger flavor; Reviewer suggests using beef broth/stock as an alternative to dashi"
+    "expected_impact": "Reviewer increased meat amount for better balance with broth; Reviewer adjusted soy sauce and sugar for stronger flavor; Reviewer suggests using beef broth/stock as an alternative to dashi (and 1 more improvements)"
   },
   "description": "This main dish recipe features sliced beef sirloin cooked with potatoes, and onion in a sauce made with prepared dashi soup, sake, and soy sauce.",
   "servings": "4",
   "prep_time": null,
   "cook_time": null,
   "total_time": null,
-  "created_at": "2026-06-02T13:17:36.136862",
+  "created_at": "2026-06-02T14:16:42.280394",
   "pipeline_version": "1.0.0"
 }

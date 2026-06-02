@@ -57,6 +57,9 @@ class SourceReview(BaseModel):
     text: str = Field(description="Full text of the original review")
     reviewer: Optional[str] = Field(description="Username of the reviewer")
     rating: Optional[int] = Field(description="Star rating given by reviewer")
+    review_rank: Optional[int] = Field(
+        default=None, description="0-based rank from scraped review order (0 = most helpful)"
+    )
 
 
 class ChangeRecord(BaseModel):
@@ -156,3 +159,9 @@ class Review(BaseModel):
     rating: Optional[int] = None
     username: Optional[str] = None
     has_modification: bool = False
+    review_rank: Optional[int] = Field(
+        default=None,
+        description="0-based rank from AllRecipes JSON-LD order (0 = most helpful)",
+    )
+    is_most_helpful_positive: bool = False
+    is_featured: bool = False  # legacy alias; prefer is_most_helpful_positive

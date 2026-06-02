@@ -1,0 +1,90 @@
+{
+  "recipe_id": "18011_enhanced",
+  "original_recipe_id": "18011",
+  "title": "Marinade for Steak (Community Enhanced)",
+  "ingredients": [
+    "1 cup vegetable oil",
+    "0.5 cup Lite Soy Sauce",
+    "0.33333334326744 cup Balsamic Vinegar",
+    "0.25 cup fresh lemon juice",
+    "3 tablespoons Worcestershire sauce",
+    "1 tablespoon freshly ground black pepper",
+    "2 tablespoons Dijon-style prepared mustard",
+    "1 onion, sliced",
+    "4 cloves garlic, minced",
+    "1 tablespoon A1 sauce"
+  ],
+  "instructions": [
+    "Combine oil, soy sauce, vinegar, lemon juice, Worcestershire sauce, ground black pepper, mustard, onion, and garlic in a medium bowl. Mix together well, and use to marinate your favorite steak."
+  ],
+  "modifications_applied": [
+    {
+      "source_review": {
+        "text": "This really is the BEST steak marinade I have ever tasted. I have never been able to find a delicious mariade for steak and FINALLY I have found it. I never liked steak before this b/c it never had a flavor that I liked. I used Rib Eye's. The only changes I made was to substitute Balsamic Vinegar instead of Red Wine Vinegar (b/c I didn't have any), Lite Soy Sauce, 4 garlic cloves and I added 1 Tbsp. of A1 sauce as suggested by another viewer. I poked holes in the steak with a knife so marinade would get into the steaks. I marinated it for 8 hours (turning every hr or so) and grilled on gas cooktop stove using a cast iron griddle. Family said it was the best & most tender steak they have ever had and I totally agree. Definitely will be making this one a lot!!! Thanks a bunch!",
+        "reviewer": "sme03",
+        "rating": 5,
+        "review_rank": 2
+      },
+      "modification_types": [
+        "addition",
+        "quantity_adjustment",
+        "ingredient_substitution"
+      ],
+      "summary_reasoning": "Reviewer substituted Balsamic Vinegar for Red Wine Vinegar due to unavailability; Reviewer used Lite Soy Sauce for a lighter flavor profile; Reviewer increased garlic for more flavor; Reviewer added A1 sauce for additional flavor as suggested by another viewer",
+      "changes_made": [
+        {
+          "type": "ingredient",
+          "edit_type": "ingredient_substitution",
+          "reasoning": "Reviewer substituted Balsamic Vinegar for Red Wine Vinegar due to unavailability",
+          "from_text": "0.33333334326744 cup red wine vinegar",
+          "to_text": "0.33333334326744 cup Balsamic Vinegar",
+          "operation": "replace",
+          "line_index": 2
+        },
+        {
+          "type": "ingredient",
+          "edit_type": "ingredient_substitution",
+          "reasoning": "Reviewer used Lite Soy Sauce for a lighter flavor profile",
+          "from_text": "0.5 cup soy sauce",
+          "to_text": "0.5 cup Lite Soy Sauce",
+          "operation": "replace",
+          "line_index": 1
+        },
+        {
+          "type": "ingredient",
+          "edit_type": "quantity_adjustment",
+          "reasoning": "Reviewer increased garlic for more flavor",
+          "from_text": "2 cloves garlic, minced",
+          "to_text": "4 cloves garlic, minced",
+          "operation": "replace",
+          "line_index": 8
+        },
+        {
+          "type": "ingredient",
+          "edit_type": "addition",
+          "reasoning": "Reviewer added A1 sauce for additional flavor as suggested by another viewer",
+          "from_text": "",
+          "to_text": "1 tablespoon A1 sauce",
+          "operation": "add",
+          "line_index": 9
+        }
+      ]
+    }
+  ],
+  "enhancement_summary": {
+    "total_changes": 4,
+    "change_types": [
+      "addition",
+      "quantity_adjustment",
+      "ingredient_substitution"
+    ],
+    "expected_impact": "Reviewer substituted Balsamic Vinegar for Red Wine Vinegar due to unavailability; Reviewer used Lite Soy Sauce for a lighter flavor profile; Reviewer increased garlic for more flavor (and 1 more improvements)"
+  },
+  "description": "This is a great marinade for any cut of beef, from ribeye to skirt steak, that&#39;s made with basic pantry ingredients for tender, juicy steak every time.",
+  "servings": "20",
+  "prep_time": null,
+  "cook_time": null,
+  "total_time": null,
+  "created_at": "2026-06-02T15:28:17.470475",
+  "pipeline_version": "1.0.0"
+}

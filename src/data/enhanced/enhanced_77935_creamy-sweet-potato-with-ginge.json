@@ -4,7 +4,7 @@
   "title": "Creamy Sweet Potato With Ginger Soup (Community Enhanced)",
   "ingredients": [
     "2 tablespoons olive oil",
-    "1.5 pounds peeled raw sweet potatoes, cut into 1-inch chunks",
+    "canned yams",
     "1 large onion, cut into large dice",
     "1 tablespoon butter",
     "1 pinch sugar",
@@ -12,11 +12,11 @@
     "1.5 teaspoons ground ginger",
     "0.5 teaspoon ground nutmeg",
     "0.125 teaspoon cayenne pepper",
-    "1/4 teaspoon cayenne pepper, lots of black pepper",
     "3 cups chicken broth, homemade or from a carton or can",
-    "heavy cream",
+    "1.5 cups half-and-half (or whole milk)",
     "Salt and freshly ground pepper, to taste",
-    "Garnish: chopped honey-roasted peanuts"
+    "Garnish: chopped honey-roasted peanuts",
+    "Roasted Brussels Sprouts and peppers"
   ],
   "instructions": [
     "Gather the ingredients.",
@@ -25,55 +25,66 @@
     "Add ginger, nutmeg and cayenne pepper; continue to saute until fragrant, 30 seconds to 1 minute longer.",
     "Add broth; bring to a simmer over medium-high heat. Reduce heat to low and simmer, partially covered, until sweet potatoes are tender, about 10 minutes.",
     "Using an immersion blender or traditional blender, puree until very smooth, 30 seconds to 1 minute. (If using a traditional blender, vent it either by removing the lid&#39;s pop-out center or by lifting one edge of the lid. Drape the blender canister with a kitchen towel. To &#39;clean&#39; the canister, pour in a little half-and-half, blend briefly, then add to the soup.)",
-    "Return to pan (or a soup pot); add enough half-and-half so the mixture is souplike, yet thick enough to float garnish. Taste, and add salt and pepper if needed. Heat through, ladle into bowls, garnish and serve."
+    "Return to pan (or a soup pot); add enough half-and-half so the mixture is souplike, yet thick enough to float garnish. Taste, and add salt and pepper if needed. Heat through, ladle into bowls, garnish and serve.",
+    "Drizzle heavy cream over each bowl before serving."
   ],
   "modifications_applied": [
     {
       "source_review": {
-        "text": "Great soup! The vegetables caramelize beautifully with this method (though I think it would also work fine in the oven, which would take longer but keep my hands free for other things). I added extra cayenne pepper, lots of black pepper, and used heavy cream instead of 1/2 & 1/2; otherwise followed as written. I didn't find it at all too sweet - these are sweet potatoes, after all. Thanks for the recipe!",
+        "text": "I made this with canned yams. I added roasted Brussels Sprouts and peppers. I drizzled heavy cream at the end. Loved the contrast of the roasted greens to the sweet and spicy. Turned out amazing!",
         "reviewer": null,
-        "rating": 4
+        "rating": 5,
+        "helpful_count": 0
       },
       "modification_types": [
-        "addition",
-        "ingredient_substitution"
+        "ingredient_substitution",
+        "addition"
       ],
-      "summary_reasoning": "Reviewer added extra cayenne pepper and lots of black pepper for more heat and flavor; Reviewer substituted heavy cream for half-and-half for a richer and creamier soup",
+      "summary_reasoning": "Reviewer substituted canned yams for raw sweet potatoes; Reviewer added roasted Brussels Sprouts and peppers for additional flavor and texture; Reviewer added a final drizzle of heavy cream for richness and contrast",
       "changes_made": [
         {
           "type": "ingredient",
-          "edit_type": "addition",
-          "reasoning": "Reviewer added extra cayenne pepper and lots of black pepper for more heat and flavor",
-          "from_text": "",
-          "to_text": "1/4 teaspoon cayenne pepper, lots of black pepper",
-          "operation": "add",
-          "line_index": 9
+          "edit_type": "ingredient_substitution",
+          "reasoning": "Reviewer substituted canned yams for raw sweet potatoes",
+          "from_text": "1.5 pounds peeled raw sweet potatoes, cut into 1-inch chunks",
+          "to_text": "canned yams",
+          "operation": "replace",
+          "line_index": 1
         },
         {
           "type": "ingredient",
-          "edit_type": "ingredient_substitution",
-          "reasoning": "Reviewer substituted heavy cream for half-and-half for a richer and creamier soup",
-          "from_text": "1.5 cups half-and-half (or whole milk)",
-          "to_text": "heavy cream",
-          "operation": "replace",
-          "line_index": 11
+          "edit_type": "addition",
+          "reasoning": "Reviewer added roasted Brussels Sprouts and peppers for additional flavor and texture",
+          "from_text": "",
+          "to_text": "Roasted Brussels Sprouts and peppers",
+          "operation": "add",
+          "line_index": 13
+        },
+        {
+          "type": "instruction",
+          "edit_type": "addition",
+          "reasoning": "Reviewer added a final drizzle of heavy cream for richness and contrast",
+          "from_text": "",
+          "to_text": "Drizzle heavy cream over each bowl before serving.",
+          "operation": "add",
+          "line_index": 7
         }
       ]
     }
   ],
   "enhancement_summary": {
-    "total_changes": 2,
+    "total_changes": 3,
     "change_types": [
-      "addition",
-      "ingredient_substitution"
+      "ingredient_substitution",
+      "addition"
     ],
-    "expected_impact": "Reviewer added extra cayenne pepper and lots of black pepper for more heat and flavor; Reviewer substituted heavy cream for half-and-half for a richer and creamier soup"
+    "expected_impact": "Reviewer substituted canned yams for raw sweet potatoes; Reviewer added roasted Brussels Sprouts and peppers for additional flavor and texture; Reviewer added a final drizzle of heavy cream for richness and contrast"
   },
   "description": "Made with sweet potatoes and seasoned with ginger, nutmeg, and cayenne pepper, this creamy soup is topped with honey-roasted peanuts.",
   "servings": "8",
   "prep_time": null,
   "cook_time": null,
   "total_time": null,
-  "created_at": "2026-06-02T13:17:40.583653",
+  "created_at": "2026-06-02T14:16:45.560834",
   "pipeline_version": "1.0.0"
 }

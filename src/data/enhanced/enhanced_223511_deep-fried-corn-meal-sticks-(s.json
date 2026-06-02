@@ -1,0 +1,64 @@
+{
+  "recipe_id": "223511_enhanced",
+  "original_recipe_id": "223511",
+  "title": "Deep Fried Corn Meal Sticks (Sorullitos de Maiz) with Dipping Sauce (Community Enhanced)",
+  "ingredients": [
+    "2 cups water",
+    "3 tablespoons white sugar, or more to taste",
+    "1 tablespoon butter",
+    "1 teaspoon salt",
+    "1.5 cups cornmeal, or as needed",
+    "3 cups vegetable oil for frying",
+    "vegetable oil",
+    "0.5 cup mayonnaise, or to taste",
+    "0.25 cup ketchup",
+    "1 pinch garlic salt, or to taste",
+    "1 stick of extra sharp cheddar cheese, cut into small pieces"
+  ],
+  "instructions": [
+    "Bring water to a boil in a saucepan. Stir in sugar, butter, and salt; cook until sugar dissolved. Reduce heat to low; whisk in 1 cup cornmeal until smooth. Stir in remaining 1/2 cup cornmeal to make a very thick, workable dough.",
+    "Heat 3 cups vegetable oil in a deep fryer or large saucepan to 350 degrees F (175 degrees C).",
+    "Meanwhile, grease your hands well with 2 teaspoons vegetable oil. Scoop about 3 tablespoons cornmeal dough; roll into a ball, then shape into a 3-inch long stick about 1/2-inch wide. Repeat with remaining dough, oiling your hands as needed.",
+    "Deep fry cornmeal sticks, working in batches of 3 or 4 at a time, until golden brown. Drain on paper towels and keep warm.",
+    "Whisk mayonnaise, ketchup, and garlic salt together in a bowl until well combined. Serve cornmeal sticks with dipping sauce."
+  ],
+  "modifications_applied": [
+    {
+      "source_review": {
+        "text": "Absolutely fabulous!! I have been making sorullitos for years and experimented with the proportions with varying results, so I wanted to try this recipe. I am very happy to report that the particular ratio of ingredients here is SPOT ON. If you are looking for a sorullito that is crunchy outside and tender soft on the inside, with a taste on the sweeter side, THIS IS IT!!! (but of course you can reduce the sugar and increase the salt a bit if you want it to have more of a savory taste). I did put a stick of extra sharp cheddar cheese inside of each piece for an extra YUMMMM Thanks for the recipe Marisa!!!",
+        "reviewer": "Milly Suazo-Martinez",
+        "rating": 5,
+        "review_rank": 0
+      },
+      "modification_types": [
+        "addition"
+      ],
+      "summary_reasoning": "Reviewer added extra sharp cheddar cheese inside each sorullito for added flavor and richness",
+      "changes_made": [
+        {
+          "type": "ingredient",
+          "edit_type": "addition",
+          "reasoning": "Reviewer added extra sharp cheddar cheese inside each sorullito for added flavor and richness",
+          "from_text": "",
+          "to_text": "1 stick of extra sharp cheddar cheese, cut into small pieces",
+          "operation": "add",
+          "line_index": 10
+        }
+      ]
+    }
+  ],
+  "enhancement_summary": {
+    "total_changes": 1,
+    "change_types": [
+      "addition"
+    ],
+    "expected_impact": "Reviewer added extra sharp cheddar cheese inside each sorullito for added flavor and richness"
+  },
+  "description": "Puerto Rican-style corn fritters are just a little sweet and just a little salty. Deep fry them to a golden crisp brown and serve with an easy dipping sauce for a fun snack or appetizer.",
+  "servings": "6",
+  "prep_time": null,
+  "cook_time": null,
+  "total_time": null,
+  "created_at": "2026-06-02T15:28:18.884187",
+  "pipeline_version": "1.0.0"
+}

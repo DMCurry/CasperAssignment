@@ -1,0 +1,87 @@
+{
+  "recipe_id": "238339_enhanced",
+  "original_recipe_id": "238339",
+  "title": "Simple Cantaloupe Smoothie (Community Enhanced)",
+  "ingredients": [
+    "1 cup vanilla Greek yogurt",
+    "0.5 cup orange juice",
+    "more than 0.5 cup sliced cantaloupe",
+    "4 ice cubes, crushed, or as needed",
+    "2 more ice cubes, crushed"
+  ],
+  "instructions": [
+    "Process yogurt, orange juice, more cantaloupe, and ice cubes in a blender until smooth, about 30 seconds."
+  ],
+  "modifications_applied": [
+    {
+      "source_review": {
+        "text": "Used vanilla Greek yogurt (what I had on hand)t, added a few more ice cubes and ended up with a really creamy breakfast smoothie. I had a perfectly ripe cantaloupe and just eyeballed the amount, adding a more than 1/2 cup I'd say, but the OJ still slightly overpowered the cantaloupe flavor. Didn't really matter that much, as it was perfectly sweet, and I enjoyed it.",
+        "reviewer": "lutzflcat",
+        "rating": 4,
+        "review_rank": 0
+      },
+      "modification_types": [
+        "addition",
+        "technique_change",
+        "quantity_adjustment",
+        "ingredient_substitution"
+      ],
+      "summary_reasoning": "Reviewer substituted vanilla Greek yogurt for vanilla yogurt for a creamier texture; Reviewer added extra ice cubes for a creamier texture; Reviewer increased the amount of cantaloupe for more flavor; Update blending step to reflect the addition of more cantaloupe",
+      "changes_made": [
+        {
+          "type": "ingredient",
+          "edit_type": "ingredient_substitution",
+          "reasoning": "Reviewer substituted vanilla Greek yogurt for vanilla yogurt for a creamier texture",
+          "from_text": "1 cup vanilla yogurt (such as Dannon® Light and Fit®)",
+          "to_text": "1 cup vanilla Greek yogurt",
+          "operation": "replace",
+          "line_index": 0
+        },
+        {
+          "type": "ingredient",
+          "edit_type": "addition",
+          "reasoning": "Reviewer added extra ice cubes for a creamier texture",
+          "from_text": "",
+          "to_text": "2 more ice cubes, crushed",
+          "operation": "add",
+          "line_index": 4
+        },
+        {
+          "type": "ingredient",
+          "edit_type": "quantity_adjustment",
+          "reasoning": "Reviewer increased the amount of cantaloupe for more flavor",
+          "from_text": "0.5 cup sliced cantaloupe",
+          "to_text": "more than 0.5 cup sliced cantaloupe",
+          "operation": "replace",
+          "line_index": 2
+        },
+        {
+          "type": "instruction",
+          "edit_type": "technique_change",
+          "reasoning": "Update blending step to reflect the addition of more cantaloupe",
+          "from_text": "Process yogurt, orange juice, cantaloupe, and ice cubes in a blender until smooth, about 30 seconds.",
+          "to_text": "Process yogurt, orange juice, more cantaloupe, and ice cubes in a blender until smooth, about 30 seconds.",
+          "operation": "replace",
+          "line_index": 0
+        }
+      ]
+    }
+  ],
+  "enhancement_summary": {
+    "total_changes": 4,
+    "change_types": [
+      "addition",
+      "technique_change",
+      "quantity_adjustment",
+      "ingredient_substitution"
+    ],
+    "expected_impact": "Reviewer substituted vanilla Greek yogurt for vanilla yogurt for a creamier texture; Reviewer added extra ice cubes for a creamier texture; Reviewer increased the amount of cantaloupe for more flavor (and 1 more improvements)"
+  },
+  "description": "This cantaloupe smoothie recipe uses vanilla yogurt blended with fresh cantaloupe and orange juice for a creamy and delicious way to start your day.",
+  "servings": "1",
+  "prep_time": null,
+  "cook_time": null,
+  "total_time": null,
+  "created_at": "2026-06-02T15:28:30.038810",
+  "pipeline_version": "1.0.0"
+}

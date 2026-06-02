@@ -18,6 +18,57 @@ from .models import ModificationObject, Recipe, Review
 from .prompts import SYSTEM_PROMPT, build_few_shot_user_prompt
 
 
+def rank_modification_reviews(reviews: list[Review]) -> list[Review]:
+    """
+    Sort modification reviews by scraped review_rank (lower = more helpful).
+
+    Args:
+        reviews: All reviews for a recipe
+
+    Returns:
+        Modification reviews sorted best-first
+    """
+    modification_reviews = [review for review in reviews if review.has_modification]
+
+    def sort_key(review: Review) -> tuple[int, int]:
+        rank = review.review_rank if review.review_rank is not None else 9999
+        return (rank, -(review.rating or 0))
+
+    return sorted(modification_reviews, key=sort_key)
+
+
+def build_review_candidates(reviews: list[Review]) -> list[Review]:
+    """
+    Build ordered review candidates for modification extraction.
+
+    Review at rank 0 (most helpful) is tried first, even when regex heuristics
+    did not flag it as a modification review. Remaining candidates follow
+    review_rank order.
+    """
+    most_helpful = next(
+        (review for review in reviews if review.review_rank == 0),
+        next((review for review in reviews if review.is_most_helpful_positive), None),
+    )
+    ranked_modifications = rank_modification_reviews(reviews)
+
+    candidates: list[Review] = []
+    seen_texts: set[str] = set()
+
+    def add_candidate(review: Review) -> None:
+        if review.text in seen_texts:
+            return
+        candidates.append(review)
+        seen_texts.add(review.text)
+
+    if most_helpful:
+        add_candidate(most_helpful)
+
+    for review in ranked_modifications:
+        add_candidate(review)
+
+    return candidates
+
+
 class TweakExtractor:
     """Extracts structured modifications from review text using LLM processing."""
 
@@ -111,6 +162,15 @@ class TweakExtractor:
 
         return None
 
+    @staticmethod
+    def _format_review_selection(review: Review) -> str:
+        """Format review metadata for logging."""
+        return (
+            f"rank={review.review_rank}, "
+            f"most_helpful={review.is_most_helpful_positive}, "
+            f"rating={review.rating}"
+        )
+
     def extract_single_modification(
         self,
         reviews: list[Review],
@@ -120,6 +180,10 @@ class TweakExtractor:
         """
         Extract modification from a single review.
 
+        By default, tries the review at rank 0 first, then other modification
+        reviews in review_rank order. When review_index is set, uses deterministic
+        selection for tests.
+
         Args:
             reviews: List of reviews to choose from
             recipe: Original recipe being modified
@@ -128,36 +192,69 @@ class TweakExtractor:
         Returns:
             Tuple of (ModificationObject, source_Review) if successful, (None, None) otherwise
         """
-        import random
-
-        modification_reviews = [r for r in reviews if r.has_modification]
-
-        if not modification_reviews:
-            logger.warning("No reviews with modifications found")
-            return None, None
+        modification_reviews = [review for review in reviews if review.has_modification]
+        most_helpful = next(
+            (review for review in reviews if review.is_most_helpful_positive), None
+        )
 
         if review_index is not None:
+            if not modification_reviews:
+                logger.warning("No reviews with modifications found")
+                return None, None
+
             if review_index < 0 or review_index >= len(modification_reviews):
                 logger.warning(
                     f"review_index {review_index} out of range "
                     f"(0-{len(modification_reviews) - 1})"
                 )
                 return None, None
+
             selected_review = modification_reviews[review_index]
             logger.info(
-                f"Selected review at index {review_index}: "
+                f"Selected review at index {review_index} "
+                f"({self._format_review_selection(selected_review)}): "
                 f"{selected_review.text[:100]}..."
             )
-        else:
-            selected_review = random.choice(modification_reviews)
-            logger.info(f"Selected review: {selected_review.text[:100]}...")
+            modification = self.extract_modification(selected_review, recipe)
+            if modification:
+                return modification, selected_review
+            logger.warning("Failed to extract modification from selected review")
+            return None, None
 
-        modification = self.extract_modification(selected_review, recipe)
-        if modification:
-            logger.info("Successfully extracted modification from selected review")
-            return modification, selected_review
+        ranked_reviews = build_review_candidates(reviews)
+        if not ranked_reviews:
+            logger.warning("No review candidates found")
+            return None, None
 
-        logger.warning("Failed to extract modification from selected review")
+        logger.info(
+            f"Prepared {len(ranked_reviews)} review candidates "
+            "(rank 0 first, then ranked modifications by review_rank)"
+        )
+        if most_helpful:
+            logger.info(
+                "Most helpful positive review identified: "
+                f"{most_helpful.text[:100]}..."
+            )
+
+        for index, candidate in enumerate(ranked_reviews):
+            logger.info(
+                f"Trying candidate {index + 1}/{len(ranked_reviews)} "
+                f"({self._format_review_selection(candidate)}): "
+                f"{candidate.text[:100]}..."
+            )
+            modification = self.extract_modification(candidate, recipe)
+            if modification:
+                logger.info(
+                    f"Selected review ({self._format_review_selection(candidate)})"
+                )
+                return modification, candidate
+
+            logger.warning(
+                f"Extraction failed for review ({self._format_review_selection(candidate)}), "
+                "trying next candidate..."
+            )
+
+        logger.warning("Failed to extract modification from all ranked reviews")
         return None, None
 
     def test_extraction(

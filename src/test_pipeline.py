@@ -23,6 +23,9 @@ from llm_pipeline.pipeline import LLMAnalysisPipeline
 # Load environment variables from .env file
 load_dotenv()
 
+# Recipe JSON lives alongside scraper output — run tests from src/
+DATA_DIR = Path("data")
+
 # Index 1 in modification reviews for the 4-tweak compound cookie review
 COMPOUND_REVIEW_INDEX = 1
 
@@ -87,8 +90,8 @@ def test_single_recipe():
         logger.error(f"Failed to initialize pipeline: {e}")
         return False
 
-    recipe_file = "../data/recipe_10813_best-chocolate-chip-cookies.json"
-    if not Path(recipe_file).exists():
+    recipe_file = DATA_DIR / "recipe_10813_best-chocolate-chip-cookies.json"
+    if not recipe_file.exists():
         logger.error(f"Recipe file not found: {recipe_file}")
         return False
 
@@ -100,7 +103,7 @@ def test_single_recipe():
 
     try:
         enhanced_recipe = pipeline.process_single_recipe(
-            recipe_file=recipe_file,
+            recipe_file=str(recipe_file),
             save_output=True,
             review_index=COMPOUND_REVIEW_INDEX,
         )
@@ -113,11 +116,15 @@ def test_single_recipe():
         log_compound_review_warnings(enhanced_recipe)
 
         mod = enhanced_recipe.modifications_applied[0]
+        source = mod.source_review
         logger.success("✓ Single recipe test successful!")
         logger.info(f"Enhanced recipe: {enhanced_recipe.title}")
         logger.info(f"Modifications applied: {len(enhanced_recipe.modifications_applied)}")
         logger.info(f"Modification types: {mod.modification_types}")
         logger.info(f"Changes made: {len(mod.changes_made)}")
+        logger.info(
+            f"Source review rank: {source.review_rank}, rating: {source.rating}"
+        )
         logger.info(f"Total changes: {enhanced_recipe.enhancement_summary.total_changes}")
         logger.info(f"Expected impact: {enhanced_recipe.enhancement_summary.expected_impact}")
         return True
@@ -157,7 +164,7 @@ def test_all_recipes():
         logger.error(f"Failed to initialize pipeline: {e}")
         return False
 
-    data_dir = Path("../data")
+    data_dir = DATA_DIR
     recipe_files = sorted(data_dir.glob("recipe_*.json"))
 
     try:
