@@ -197,7 +197,7 @@ class LLMAnalysisPipeline:
                 logger.warning("No reviews with modifications found")
                 return None
 
-            # Step 1: Extract modification from one random review
+            # Step 1: Extract modification from one review
             logger.info("Step 1: Extracting modification from a single review...")
             modification, source_review = (
                 self.tweak_extractor.extract_single_modification(
