@@ -14,7 +14,7 @@ When a user shares their experience modifying a recipe, you need to:
 
 You must output valid JSON that matches the ModificationObject schema.
 
-Categories:
+Categories (use one or more in modification_types):
 - "ingredient_substitution": Replacing one ingredient with another
 - "quantity_adjustment": Changing amounts of existing ingredients
 - "technique_change": Altering cooking method, temperature, time
@@ -26,7 +26,12 @@ Edit operations:
 - "add_after": Add new text after finding target text
 - "remove": Remove text that matches the find pattern
 
-Be precise with text matching - use the exact text from the original recipe when possible."""
+Extraction rules:
+- Extract EVERY distinct change the user made as a separate edit in the edits array
+- Use one or more types in modification_types for compound reviews
+- When the reviewer uses relative language (e.g. "halved the sugar"), compute absolute amounts from the recipe
+- Use the exact ingredient or instruction line text from the recipe for the find field
+- Focus on concrete changes the user actually made, not general suggestions or future intentions"""
 
 EXTRACTION_PROMPT = """Original Recipe:
 Title: {title}
@@ -39,8 +44,8 @@ Extract the recipe modifications from this review. The user has made changes to 
 
 Output a JSON object with this structure:
 {{
-    "modification_type": "quantity_adjustment|ingredient_substitution|technique_change|addition|removal",
-    "reasoning": "Brief explanation of why this modification improves the recipe",
+    "modification_types": ["quantity_adjustment", "addition"],
+    "reasoning": "Brief explanation of why these modifications improve the recipe",
     "edits": [
         {{
             "target": "ingredients|instructions",
@@ -50,9 +55,7 @@ Output a JSON object with this structure:
             "add": "text to add (for add_after operations)"
         }}
     ]
-}
-
-Focus on concrete changes the user actually made, not general suggestions."""
+}}"""
 
 FEW_SHOT_EXAMPLES = [
     {
@@ -64,7 +67,7 @@ FEW_SHOT_EXAMPLES = [
             "2 eggs",
         ],
         "expected_output": {
-            "modification_type": "quantity_adjustment",
+            "modification_types": ["quantity_adjustment"],
             "reasoning": "Makes cookies more chewy and flavorful by increasing brown sugar ratio",
             "edits": [
                 {
@@ -90,7 +93,7 @@ FEW_SHOT_EXAMPLES = [
             "0.5 teaspoon salt",
         ],
         "expected_output": {
-            "modification_type": "addition",
+            "modification_types": ["addition", "removal"],
             "reasoning": "Helps cookies retain shape and prevents spreading during baking",
             "edits": [
                 {
@@ -108,10 +111,37 @@ FEW_SHOT_EXAMPLES = [
         },
     },
     {
+        "review": "I added an egg and halved the sugar.",
+        "ingredients": [
+            "1 cup butter, softened",
+            "1 cup white sugar",
+            "1 cup packed brown sugar",
+            "2 eggs",
+        ],
+        "expected_output": {
+            "modification_types": ["addition", "quantity_adjustment"],
+            "reasoning": "Adds richness with an extra egg and reduces sweetness by halving white sugar",
+            "edits": [
+                {
+                    "target": "ingredients",
+                    "operation": "replace",
+                    "find": "2 eggs",
+                    "replace": "3 eggs",
+                },
+                {
+                    "target": "ingredients",
+                    "operation": "replace",
+                    "find": "1 cup white sugar",
+                    "replace": "0.5 cup white sugar",
+                },
+            ],
+        },
+    },
+    {
         "review": "I used 1 tsp of salt instead of 1/2 tsp and omitted the nuts. Much better flavor without being too salty.",
         "ingredients": ["0.5 teaspoon salt", "1 cup chopped walnuts"],
         "expected_output": {
-            "modification_type": "quantity_adjustment",
+            "modification_types": ["quantity_adjustment", "removal"],
             "reasoning": "Improves flavor balance without making cookies too salty",
             "edits": [
                 {
@@ -135,7 +165,7 @@ FEW_SHOT_EXAMPLES = [
             "Bake in the preheated oven until edges are nicely browned, about 10 minutes",
         ],
         "expected_output": {
-            "modification_type": "technique_change",
+            "modification_types": ["technique_change"],
             "reasoning": "Higher temperature and shorter time creates crispier edges",
             "edits": [
                 {
@@ -159,67 +189,48 @@ FEW_SHOT_EXAMPLES = [
 def build_few_shot_prompt(
     review_text: str, title: str, ingredients: list, instructions: list
 ) -> str:
-    """Build a few-shot prompt with examples for better extraction accuracy."""
+    """Build a few-shot user prompt with examples for extraction."""
+    return build_few_shot_user_prompt(
+        review_text, title, ingredients, instructions
+    )
 
+
+def build_few_shot_user_prompt(
+    review_text: str, title: str, ingredients: list, instructions: list
+) -> str:
+    """Build the user message content with few-shot examples."""
     examples_text = "\n\n".join(
         [
             f"Example {i + 1}:\n"
             f'Review: "{example["review"]}"\n'
             f"Output: {example['expected_output']}"
-            for i, example in enumerate(
-                FEW_SHOT_EXAMPLES[:2]
-            )  # Use 2 most relevant examples
+            for i, example in enumerate(FEW_SHOT_EXAMPLES[:3])
         ]
     )
 
-    prompt = f"""{SYSTEM_PROMPT}
+    extraction_request = EXTRACTION_PROMPT.format(
+        title=title,
+        ingredients=ingredients,
+        instructions=instructions,
+        review_text=review_text,
+    )
 
-Here are some examples of how to extract modifications:
+    return f"""Here are some examples of how to extract modifications:
 
 {examples_text}
 
 Now extract from this review:
 
-{
-        EXTRACTION_PROMPT.format(
-            title=title,
-            ingredients=ingredients,
-            instructions=instructions,
-            review_text=review_text,
-        )
-    }"""
-
-    return prompt
+{extraction_request}"""
 
 
 def build_simple_prompt(
     review_text: str, title: str, ingredients: list, instructions: list
 ) -> str:
-    """Build a simple prompt without examples for faster processing."""
-    return f"""{SYSTEM_PROMPT}
-
-Original Recipe:
-Title: {title}
-Ingredients: {ingredients}
-Instructions: {instructions}
-
-User Review: "{review_text}"
-
-Extract the recipe modifications from this review. The user has made changes to improve the recipe.
-
-Output a JSON object with this structure:
-{{
-    "modification_type": "quantity_adjustment|ingredient_substitution|technique_change|addition|removal",
-    "reasoning": "Brief explanation of why this modification improves the recipe",
-    "edits": [
-        {{
-            "target": "ingredients|instructions",
-            "operation": "replace|add_after|remove",
-            "find": "exact text to find",
-            "replace": "replacement text (for replace operations)",
-            "add": "text to add (for add_after operations)"
-        }}
-    ]
-}}
-
-Focus on concrete changes the user actually made, not general suggestions."""
+    """Build a simple user prompt without examples."""
+    return EXTRACTION_PROMPT.format(
+        title=title,
+        ingredients=ingredients,
+        instructions=instructions,
+        review_text=review_text,
+    )

@@ -9,6 +9,14 @@ from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
+ModificationType = Literal[
+    "ingredient_substitution",
+    "quantity_adjustment",
+    "technique_change",
+    "addition",
+    "removal",
+]
+
 
 class ModificationEdit(BaseModel):
     """Individual atomic edit operation for a recipe modification."""
@@ -32,13 +40,10 @@ class ModificationEdit(BaseModel):
 class ModificationObject(BaseModel):
     """Structured modification parsed from a review."""
 
-    modification_type: Literal[
-        "ingredient_substitution",
-        "quantity_adjustment",
-        "technique_change",
-        "addition",
-        "removal",
-    ] = Field(description="Category of modification")
+    modification_types: List[ModificationType] = Field(
+        min_length=1,
+        description="One or more categories; compound reviews may span multiple types",
+    )
 
     reasoning: str = Field(description="Why this modification improves the recipe")
 
@@ -72,7 +77,7 @@ class ModificationApplied(BaseModel):
     source_review: SourceReview = Field(
         description="Review that suggested this modification"
     )
-    modification_type: str = Field(description="Category of modification")
+    modification_types: List[str] = Field(description="Categories of modification")
     reasoning: str = Field(description="Why this modification was applied")
     changes_made: List[ChangeRecord] = Field(
         description="Detailed list of changes made"

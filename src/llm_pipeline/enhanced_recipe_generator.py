@@ -69,7 +69,7 @@ class EnhancedRecipeGenerator:
         """
         return ModificationApplied(
             source_review=self.create_source_review(source_review),
-            modification_type=modification.modification_type,
+            modification_types=modification.modification_types,
             reasoning=modification.reasoning,
             changes_made=change_records,
         )
@@ -87,7 +87,13 @@ class EnhancedRecipeGenerator:
             EnhancementSummary with aggregate statistics
         """
         total_changes = sum(len(mod.changes_made) for mod in modifications_applied)
-        change_types = list(set(mod.modification_type for mod in modifications_applied))
+        change_types = list(
+            {
+                mod_type
+                for mod in modifications_applied
+                for mod_type in mod.modification_types
+            }
+        )
 
         # Generate expected impact summary
         impact_descriptions = []
@@ -205,7 +211,7 @@ class EnhancedRecipeGenerator:
                 {
                     "reviewer": mod.source_review.reviewer,
                     "rating": mod.source_review.rating,
-                    "modification_type": mod.modification_type,
+                    "modification_types": mod.modification_types,
                     "reasoning": mod.reasoning,
                     "changes": [
                         {

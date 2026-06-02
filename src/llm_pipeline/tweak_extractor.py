@@ -15,7 +15,7 @@ from openai import OpenAI
 from pydantic import ValidationError
 
 from .models import ModificationObject, Recipe, Review
-from .prompts import build_simple_prompt
+from .prompts import SYSTEM_PROMPT, build_few_shot_user_prompt
 
 
 class TweakExtractor:
@@ -54,8 +54,7 @@ class TweakExtractor:
             logger.warning("Review has no modification flag set")
             return None
 
-        # Build the prompt - use simple prompt to avoid format string issues
-        prompt = build_simple_prompt(
+        user_prompt = build_few_shot_user_prompt(
             review.text, recipe.title, recipe.ingredients, recipe.instructions
         )
 
@@ -67,26 +66,27 @@ class TweakExtractor:
             try:
                 response = self.client.chat.completions.create(
                     model=self.model,
-                    messages=[{"role": "user", "content": prompt}],
+                    messages=[
+                        {"role": "system", "content": SYSTEM_PROMPT},
+                        {"role": "user", "content": user_prompt},
+                    ],
                     response_format={"type": "json_object"},
-                    temperature=0.1,  # Low temperature for consistent extractions
+                    temperature=0.1,
                     max_tokens=1000,
                 )
 
                 raw_output = response.choices[0].message.content
                 logger.debug(f"LLM raw output: {raw_output}")
 
-                # Check if we got a response
                 if not raw_output:
                     logger.warning(f"Attempt {attempt + 1}: Empty response from LLM")
                     continue
 
-                # Parse and validate the JSON response
                 modification_data = json.loads(raw_output)
                 modification = ModificationObject(**modification_data)
 
                 logger.info(
-                    f"Successfully extracted {modification.modification_type} "
+                    f"Successfully extracted {modification.modification_types} "
                     f"modification with {len(modification.edits)} edits"
                 )
                 return modification
@@ -111,38 +111,53 @@ class TweakExtractor:
         return None
 
     def extract_single_modification(
-        self, reviews: list[Review], recipe: Recipe
+        self,
+        reviews: list[Review],
+        recipe: Recipe,
+        review_index: int | None = None,
     ) -> tuple[ModificationObject, Review] | tuple[None, None]:
         """
-        Extract modification from a single randomly selected review.
+        Extract modification from a single review.
 
         Args:
             reviews: List of reviews to choose from
             recipe: Original recipe being modified
+            review_index: Optional index into modification reviews for deterministic selection
 
         Returns:
             Tuple of (ModificationObject, source_Review) if successful, (None, None) otherwise
         """
         import random
 
-        # Filter to reviews with modifications
         modification_reviews = [r for r in reviews if r.has_modification]
 
         if not modification_reviews:
             logger.warning("No reviews with modifications found")
             return None, None
 
-        # Select one random review
-        selected_review = random.choice(modification_reviews)
-        logger.info(f"Selected review: {selected_review.text[:100]}...")
+        if review_index is not None:
+            if review_index < 0 or review_index >= len(modification_reviews):
+                logger.warning(
+                    f"review_index {review_index} out of range "
+                    f"(0-{len(modification_reviews) - 1})"
+                )
+                return None, None
+            selected_review = modification_reviews[review_index]
+            logger.info(
+                f"Selected review at index {review_index}: "
+                f"{selected_review.text[:100]}..."
+            )
+        else:
+            selected_review = random.choice(modification_reviews)
+            logger.info(f"Selected review: {selected_review.text[:100]}...")
 
         modification = self.extract_modification(selected_review, recipe)
         if modification:
             logger.info("Successfully extracted modification from selected review")
             return modification, selected_review
-        else:
-            logger.warning("Failed to extract modification from selected review")
-            return None, None
+
+        logger.warning("Failed to extract modification from selected review")
+        return None, None
 
     def test_extraction(
         self, review_text: str, recipe_data: dict

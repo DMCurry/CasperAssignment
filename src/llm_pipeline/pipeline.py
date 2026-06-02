@@ -114,7 +114,10 @@ class LLMAnalysisPipeline:
         return reviews
 
     def process_single_recipe(
-        self, recipe_file: str, save_output: bool = True
+        self,
+        recipe_file: str,
+        save_output: bool = True,
+        review_index: int | None = None,
     ) -> Optional[EnhancedRecipe]:
         """
         Process a single recipe through the complete pipeline.
@@ -122,6 +125,7 @@ class LLMAnalysisPipeline:
         Args:
             recipe_file: Path to recipe JSON file
             save_output: Whether to save the enhanced recipe
+            review_index: Optional index into modification reviews for deterministic selection
 
         Returns:
             EnhancedRecipe if successful, None otherwise
@@ -146,7 +150,9 @@ class LLMAnalysisPipeline:
             # Step 1: Extract modification from one random review
             logger.info("Step 1: Extracting modification from a single review...")
             modification, source_review = (
-                self.tweak_extractor.extract_single_modification(reviews, recipe)
+                self.tweak_extractor.extract_single_modification(
+                    reviews, recipe, review_index=review_index
+                )
             )
 
             if not modification or not source_review:
@@ -154,7 +160,7 @@ class LLMAnalysisPipeline:
                 return None
 
             logger.info(
-                f"Successfully extracted {modification.modification_type} modification"
+                f"Successfully extracted {modification.modification_types} modification"
             )
 
             # Step 2: Apply modification to recipe

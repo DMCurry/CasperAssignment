@@ -88,7 +88,21 @@ class RecipeModifier:
 
             if match and index is not None:
                 original_text = modified_content[index]
-                new_text = original_text.replace(edit.find, edit.replace or "")
+                if edit.find in original_text:
+                    new_text = original_text.replace(edit.find, edit.replace or "")
+                elif edit.replace:
+                    new_text = edit.replace
+                    logger.info(
+                        f"Full line replace for '{edit.find}' "
+                        f"(substring not found in matched line)"
+                    )
+                else:
+                    logger.warning(
+                        f"Could not replace '{edit.find}' in {edit.target} "
+                        f"(substring not found, no replacement text)"
+                    )
+                    return modified_content, change_records
+
                 modified_content[index] = new_text
 
                 change_records.append(ChangeRecord(
@@ -155,7 +169,9 @@ class RecipeModifier:
         Returns:
             Tuple of (modified_recipe, all_change_records)
         """
-        logger.info(f"Applying {modification.modification_type} with {len(modification.edits)} edits")
+        logger.info(
+            f"Applying {modification.modification_types} with {len(modification.edits)} edits"
+        )
 
         # Deep copy the recipe
         modified_recipe = Recipe(
@@ -210,7 +226,10 @@ class RecipeModifier:
         logger.info(f"Applying {len(modifications)} modifications sequentially")
 
         for i, modification in enumerate(modifications):
-            logger.info(f"Applying modification {i + 1}/{len(modifications)}: {modification.modification_type}")
+            logger.info(
+                f"Applying modification {i + 1}/{len(modifications)}: "
+                f"{modification.modification_types}"
+            )
 
             current_recipe, change_records = self.apply_modification(current_recipe, modification)
             all_change_records.append(change_records)
