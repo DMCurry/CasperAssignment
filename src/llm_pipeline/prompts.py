@@ -9,12 +9,12 @@ SYSTEM_PROMPT = """You are an expert recipe analyst. Your job is to extract stru
 
 When a user shares their experience modifying a recipe, you need to:
 1. Identify exactly what changes they made
-2. Understand why they made those changes
+2. Understand why they made each change
 3. Convert their modifications into structured edit operations
 
 You must output valid JSON that matches the ModificationObject schema.
 
-Categories (use one or more in modification_types):
+Edit categories (edit_type — one per edit):
 - "ingredient_substitution": Replacing one ingredient with another
 - "quantity_adjustment": Changing amounts of existing ingredients
 - "technique_change": Altering cooking method, temperature, time
@@ -23,14 +23,19 @@ Categories (use one or more in modification_types):
 
 Edit operations:
 - "replace": Find existing text and replace it
-- "add_after": Add new text after finding target text
+- "add_after": Add new text after finding target text, or append to list end
 - "remove": Remove text that matches the find pattern
 
+Insert modes (insert_mode):
+- "after_find": Insert after the line matched by find (default for replace/remove)
+- "append": Append to the end of the ingredients or instructions list (use for final steps like drizzle/garnish, or new ingredients at end of list)
+
 Extraction rules:
-- Extract EVERY distinct change the user made as a separate edit in the edits array
-- Use one or more types in modification_types for compound reviews
+- Extract EVERY distinct change as a separate edit; each edit MUST include edit_type and reasoning
 - When the reviewer uses relative language (e.g. "halved the sugar"), compute absolute amounts from the recipe
 - Use the exact ingredient or instruction line text from the recipe for the find field
+- Instruction sync: when an ingredient is substituted, removed, or renamed, include matching instructions replace edits for any step that mentions the old ingredient text
+- List ingredient edits before their related instruction sync edits
 - Focus on concrete changes the user actually made, not general suggestions or future intentions"""
 
 EXTRACTION_PROMPT = """Original Recipe:
@@ -44,15 +49,16 @@ Extract the recipe modifications from this review. The user has made changes to 
 
 Output a JSON object with this structure:
 {{
-    "modification_types": ["quantity_adjustment", "addition"],
-    "reasoning": "Brief explanation of why these modifications improve the recipe",
     "edits": [
         {{
+            "edit_type": "ingredient_substitution|quantity_adjustment|technique_change|addition|removal",
+            "reasoning": "Why this specific edit improves the recipe",
             "target": "ingredients|instructions",
             "operation": "replace|add_after|remove",
             "find": "exact text to find",
             "replace": "replacement text (for replace operations)",
-            "add": "text to add (for add_after operations)"
+            "add": "text to add (for add_after operations)",
+            "insert_mode": "after_find|append"
         }}
     ]
 }}"""
@@ -66,46 +72,59 @@ FEW_SHOT_EXAMPLES = [
             "1 cup packed brown sugar",
             "2 eggs",
         ],
+        "instructions": [],
         "expected_output": {
-            "modification_types": ["quantity_adjustment"],
-            "reasoning": "Makes cookies more chewy and flavorful by increasing brown sugar ratio",
             "edits": [
                 {
+                    "edit_type": "quantity_adjustment",
+                    "reasoning": "Reviewer reduced white sugar to half cup for less sweetness",
                     "target": "ingredients",
                     "operation": "replace",
                     "find": "1 cup white sugar",
                     "replace": "0.5 cup white sugar",
+                    "insert_mode": "after_find",
                 },
                 {
+                    "edit_type": "quantity_adjustment",
+                    "reasoning": "Reviewer increased brown sugar for chewier, more flavorful cookies",
                     "target": "ingredients",
                     "operation": "replace",
                     "find": "1 cup packed brown sugar",
                     "replace": "1.5 cups packed brown sugar",
+                    "insert_mode": "after_find",
                 },
             ],
         },
     },
     {
-        "review": "I added a teaspoon of cream of tartar to the batter and omitted the water. The cookies retained their shape and didn't spread when baked.",
+        "review": "I substituted 2% milk instead of half-and-half. Still creamy and delicious!",
         "ingredients": [
-            "1 teaspoon baking soda",
-            "2 teaspoons hot water",
-            "0.5 teaspoon salt",
+            "3 cups chicken broth",
+            "1.5 cups half-and-half (or whole milk)",
+        ],
+        "instructions": [
+            "Puree until smooth, then stir in half-and-half.",
+            "Ladle into bowls and serve.",
         ],
         "expected_output": {
-            "modification_types": ["addition", "removal"],
-            "reasoning": "Helps cookies retain shape and prevents spreading during baking",
             "edits": [
                 {
+                    "edit_type": "ingredient_substitution",
+                    "reasoning": "Reviewer substituted 2% milk for half-and-half",
                     "target": "ingredients",
-                    "operation": "add_after",
-                    "find": "0.5 teaspoon salt",
-                    "add": "1 teaspoon cream of tartar",
+                    "operation": "replace",
+                    "find": "1.5 cups half-and-half (or whole milk)",
+                    "replace": "2% milk",
+                    "insert_mode": "after_find",
                 },
                 {
-                    "target": "ingredients",
-                    "operation": "remove",
-                    "find": "2 teaspoons hot water",
+                    "edit_type": "ingredient_substitution",
+                    "reasoning": "Update puree step to reference milk instead of half-and-half",
+                    "target": "instructions",
+                    "operation": "replace",
+                    "find": "Puree until smooth, then stir in half-and-half.",
+                    "replace": "Puree until smooth, then stir in 2% milk.",
+                    "insert_mode": "after_find",
                 },
             ],
         },
@@ -118,67 +137,48 @@ FEW_SHOT_EXAMPLES = [
             "1 cup packed brown sugar",
             "2 eggs",
         ],
+        "instructions": [],
         "expected_output": {
-            "modification_types": ["addition", "quantity_adjustment"],
-            "reasoning": "Adds richness with an extra egg and reduces sweetness by halving white sugar",
             "edits": [
                 {
+                    "edit_type": "addition",
+                    "reasoning": "Reviewer added an extra egg for richness",
                     "target": "ingredients",
                     "operation": "replace",
                     "find": "2 eggs",
                     "replace": "3 eggs",
+                    "insert_mode": "after_find",
                 },
                 {
+                    "edit_type": "quantity_adjustment",
+                    "reasoning": "Reviewer halved the white sugar amount",
                     "target": "ingredients",
                     "operation": "replace",
                     "find": "1 cup white sugar",
                     "replace": "0.5 cup white sugar",
+                    "insert_mode": "after_find",
                 },
             ],
         },
     },
     {
-        "review": "I used 1 tsp of salt instead of 1/2 tsp and omitted the nuts. Much better flavor without being too salty.",
-        "ingredients": ["0.5 teaspoon salt", "1 cup chopped walnuts"],
-        "expected_output": {
-            "modification_types": ["quantity_adjustment", "removal"],
-            "reasoning": "Improves flavor balance without making cookies too salty",
-            "edits": [
-                {
-                    "target": "ingredients",
-                    "operation": "replace",
-                    "find": "0.5 teaspoon salt",
-                    "replace": "1 teaspoon salt",
-                },
-                {
-                    "target": "ingredients",
-                    "operation": "remove",
-                    "find": "1 cup chopped walnuts",
-                },
-            ],
-        },
-    },
-    {
-        "review": "I baked them at 375 degrees instead of 350 for about 8-9 minutes. They came out perfectly crispy on the edges.",
+        "review": "I drizzled heavy cream at the end before serving. Turned out amazing!",
+        "ingredients": ["3 cups broth", "1 cup cream"],
         "instructions": [
-            "Preheat the oven to 350 degrees F (175 degrees C)",
-            "Bake in the preheated oven until edges are nicely browned, about 10 minutes",
+            "Gather the ingredients.",
+            "Simmer soup until tender.",
+            "Ladle into bowls and serve.",
         ],
         "expected_output": {
-            "modification_types": ["technique_change"],
-            "reasoning": "Higher temperature and shorter time creates crispier edges",
             "edits": [
                 {
+                    "edit_type": "addition",
+                    "reasoning": "Reviewer added a final drizzle of heavy cream before serving",
                     "target": "instructions",
-                    "operation": "replace",
-                    "find": "350 degrees F",
-                    "replace": "375 degrees F",
-                },
-                {
-                    "target": "instructions",
-                    "operation": "replace",
-                    "find": "about 10 minutes",
-                    "replace": "about 8-9 minutes",
+                    "operation": "add_after",
+                    "find": "",
+                    "add": "Drizzle heavy cream over each bowl before serving.",
+                    "insert_mode": "append",
                 },
             ],
         },
@@ -204,7 +204,7 @@ def build_few_shot_user_prompt(
             f"Example {i + 1}:\n"
             f'Review: "{example["review"]}"\n'
             f"Output: {example['expected_output']}"
-            for i, example in enumerate(FEW_SHOT_EXAMPLES[:3])
+            for i, example in enumerate(FEW_SHOT_EXAMPLES)
         ]
     )
 

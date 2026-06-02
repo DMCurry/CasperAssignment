@@ -16,7 +16,7 @@
     "1 teaspoon vanilla extract",
     "0.5 cup milk",
     "2 cups apple - peeled, cored, and chopped",
-    "1 cup apple - peeled, cored, and chopped",
+    "2.5 cups apple chunks - peeled, cored, and chopped",
     "2 cups sifted confectioners' sugar",
     "0.25 cup shortening",
     "0.25 teaspoon ground cinnamon",
@@ -33,20 +33,23 @@
   "modifications_applied": [
     {
       "source_review": {
-        "text": "Mmmm, this cake was so good. I made it exactly as directed except I used a different frosting only because I had some leftover from another cake. The next time I make this I will add one more cup of apples because more is better right?!",
+        "text": "Will make this one again! (maybe for Thanksgiving dessert) I would prefer some more apple chunks in it, but that is just my preference. This cake is sweet and delicious.",
         "reviewer": null,
         "rating": 5
       },
       "modification_types": [
         "addition"
       ],
-      "reasoning": "Adding more apples will enhance the apple flavor and moisture of the cake",
+      "summary_reasoning": "Reviewer prefers more apple chunks for added texture and flavor",
       "changes_made": [
         {
           "type": "ingredient",
+          "edit_type": "addition",
+          "reasoning": "Reviewer prefers more apple chunks for added texture and flavor",
           "from_text": "",
-          "to_text": "1 cup apple - peeled, cored, and chopped",
-          "operation": "add"
+          "to_text": "2.5 cups apple chunks - peeled, cored, and chopped",
+          "operation": "add",
+          "line_index": 13
         }
       ]
     }
@@ -56,13 +59,13 @@
     "change_types": [
       "addition"
     ],
-    "expected_impact": "Adding more apples will enhance the apple flavor and moisture of the cake"
+    "expected_impact": "Reviewer prefers more apple chunks for added texture and flavor"
   },
   "description": "This delicious spicy apple cake recipe is made with fresh apples, spices, and sugar. It&#39;s a wonderfully perfect treat for the apple harvest season.",
   "servings": "9",
   "prep_time": null,
   "cook_time": null,
   "total_time": null,
-  "created_at": "2026-06-02T12:32:39.452389",
+  "created_at": "2026-06-02T13:17:38.179227",
   "pipeline_version": "1.0.0"
 }

@@ -7,7 +7,7 @@
     "1 tablespoon vegetable oil",
     "1.25 pounds sirloin steak, thinly sliced",
     "4 potatoes, cut into bite sized pieces",
-    "2 cups dashi soup",
+    "2 cups beef broth/stock",
     "0.25 cup soy sauce",
     "additional soy sauce to taste",
     "0.25 cup sake",
@@ -28,45 +28,63 @@
         "rating": 4
       },
       "modification_types": [
-        "quantity_adjustment",
-        "addition"
+        "ingredient_substitution",
+        "quantity_adjustment"
       ],
-      "reasoning": "Increasing meat quantity to better serve 4 people and enhancing flavor with extra soy sauce and sugar",
+      "summary_reasoning": "Reviewer increased meat amount for better balance with broth; Reviewer adjusted soy sauce and sugar for stronger flavor; Reviewer suggests using beef broth/stock as an alternative to dashi",
       "changes_made": [
         {
           "type": "ingredient",
+          "edit_type": "quantity_adjustment",
+          "reasoning": "Reviewer increased meat amount for better balance with broth",
           "from_text": "0.25 pound sirloin steak, thinly sliced",
           "to_text": "1.25 pounds sirloin steak, thinly sliced",
-          "operation": "replace"
+          "operation": "replace",
+          "line_index": 2
         },
         {
           "type": "ingredient",
+          "edit_type": "quantity_adjustment",
+          "reasoning": "Reviewer adjusted soy sauce and sugar for stronger flavor",
           "from_text": "",
           "to_text": "additional soy sauce to taste",
-          "operation": "add"
+          "operation": "add",
+          "line_index": 6
         },
         {
           "type": "ingredient",
+          "edit_type": "quantity_adjustment",
+          "reasoning": "Reviewer adjusted soy sauce and sugar for stronger flavor",
           "from_text": "",
           "to_text": "additional sugar to taste",
-          "operation": "add"
+          "operation": "add",
+          "line_index": 9
+        },
+        {
+          "type": "ingredient",
+          "edit_type": "ingredient_substitution",
+          "reasoning": "Reviewer suggests using beef broth/stock as an alternative to dashi",
+          "from_text": "2 cups dashi soup",
+          "to_text": "2 cups beef broth/stock",
+          "operation": "replace",
+          "line_index": 4
         }
       ]
     }
   ],
   "enhancement_summary": {
-    "total_changes": 3,
+    "total_changes": 4,
     "change_types": [
-      "quantity_adjustment",
-      "addition"
+      "ingredient_substitution",
+      "quantity_adjustment"
     ],
-    "expected_impact": "Increasing meat quantity to better serve 4 people and enhancing flavor with extra soy sauce and sugar"
+    "expected_impact": "Reviewer increased meat amount for better balance with broth; Reviewer adjusted soy sauce and sugar for stronger flavor; Reviewer suggests using beef broth/stock as an alternative to dashi"
   },
   "description": "This main dish recipe features sliced beef sirloin cooked with potatoes, and onion in a sauce made with prepared dashi soup, sake, and soy sauce.",
   "servings": "4",
   "prep_time": null,
   "cook_time": null,
   "total_time": null,
-  "created_at": "2026-06-02T12:32:38.244629",
+  "created_at": "2026-06-02T13:17:36.136862",
   "pipeline_version": "1.0.0"
 }

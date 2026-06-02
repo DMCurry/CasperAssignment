@@ -4,7 +4,7 @@
   "title": "Creamy Sweet Potato With Ginger Soup (Community Enhanced)",
   "ingredients": [
     "2 tablespoons olive oil",
-    "canned yams",
+    "1.5 pounds peeled raw sweet potatoes, cut into 1-inch chunks",
     "1 large onion, cut into large dice",
     "1 tablespoon butter",
     "1 pinch sugar",
@@ -12,15 +12,14 @@
     "1.5 teaspoons ground ginger",
     "0.5 teaspoon ground nutmeg",
     "0.125 teaspoon cayenne pepper",
+    "1/4 teaspoon cayenne pepper, lots of black pepper",
     "3 cups chicken broth, homemade or from a carton or can",
-    "1.5 cups half-and-half (or whole milk)",
+    "heavy cream",
     "Salt and freshly ground pepper, to taste",
-    "Garnish: chopped honey-roasted peanuts",
-    "Roasted Brussels Sprouts and peppers"
+    "Garnish: chopped honey-roasted peanuts"
   ],
   "instructions": [
     "Gather the ingredients.",
-    "Drizzle heavy cream at the end.",
     "Heat oil over medium-high heat in a large, deep saute pan until shimmering. Add sweet potatoes, then onion; saute, stirring very little at first, then more frequently, until vegetables start to turn golden brown, 7 to 8 minutes.",
     "Reduce heat to low and add butter, sugar and garlic; continue cooking until all vegetables are a rich spotty caramel color, about 10 minutes longer.",
     "Add ginger, nutmeg and cayenne pepper; continue to saute until fragrant, 30 seconds to 1 minute longer.",
@@ -31,50 +30,50 @@
   "modifications_applied": [
     {
       "source_review": {
-        "text": "I made this with canned yams. I added roasted Brussels Sprouts and peppers. I drizzled heavy cream at the end. Loved the contrast of the roasted greens to the sweet and spicy. Turned out amazing!",
+        "text": "Great soup! The vegetables caramelize beautifully with this method (though I think it would also work fine in the oven, which would take longer but keep my hands free for other things). I added extra cayenne pepper, lots of black pepper, and used heavy cream instead of 1/2 & 1/2; otherwise followed as written. I didn't find it at all too sweet - these are sweet potatoes, after all. Thanks for the recipe!",
         "reviewer": null,
-        "rating": 5
+        "rating": 4
       },
       "modification_types": [
-        "ingredient_substitution",
-        "addition"
+        "addition",
+        "ingredient_substitution"
       ],
-      "reasoning": "Enhances flavor and texture with roasted Brussels sprouts and peppers, adds richness with heavy cream",
+      "summary_reasoning": "Reviewer added extra cayenne pepper and lots of black pepper for more heat and flavor; Reviewer substituted heavy cream for half-and-half for a richer and creamier soup",
       "changes_made": [
         {
           "type": "ingredient",
-          "from_text": "1.5 pounds peeled raw sweet potatoes, cut into 1-inch chunks",
-          "to_text": "canned yams",
-          "operation": "replace"
+          "edit_type": "addition",
+          "reasoning": "Reviewer added extra cayenne pepper and lots of black pepper for more heat and flavor",
+          "from_text": "",
+          "to_text": "1/4 teaspoon cayenne pepper, lots of black pepper",
+          "operation": "add",
+          "line_index": 9
         },
         {
           "type": "ingredient",
-          "from_text": "",
-          "to_text": "Roasted Brussels Sprouts and peppers",
-          "operation": "add"
-        },
-        {
-          "type": "instruction",
-          "from_text": "",
-          "to_text": "Drizzle heavy cream at the end.",
-          "operation": "add"
+          "edit_type": "ingredient_substitution",
+          "reasoning": "Reviewer substituted heavy cream for half-and-half for a richer and creamier soup",
+          "from_text": "1.5 cups half-and-half (or whole milk)",
+          "to_text": "heavy cream",
+          "operation": "replace",
+          "line_index": 11
         }
       ]
     }
   ],
   "enhancement_summary": {
-    "total_changes": 3,
+    "total_changes": 2,
     "change_types": [
-      "ingredient_substitution",
-      "addition"
+      "addition",
+      "ingredient_substitution"
     ],
-    "expected_impact": "Enhances flavor and texture with roasted Brussels sprouts and peppers, adds richness with heavy cream"
+    "expected_impact": "Reviewer added extra cayenne pepper and lots of black pepper for more heat and flavor; Reviewer substituted heavy cream for half-and-half for a richer and creamier soup"
   },
   "description": "Made with sweet potatoes and seasoned with ginger, nutmeg, and cayenne pepper, this creamy soup is topped with honey-roasted peanuts.",
   "servings": "8",
   "prep_time": null,
   "cook_time": null,
   "total_time": null,
-  "created_at": "2026-06-02T12:32:41.009878",
+  "created_at": "2026-06-02T13:17:40.583653",
   "pipeline_version": "1.0.0"
 }

@@ -85,9 +85,10 @@ class TweakExtractor:
                 modification_data = json.loads(raw_output)
                 modification = ModificationObject(**modification_data)
 
+                edit_types = list({e.edit_type for e in modification.edits})
                 logger.info(
-                    f"Successfully extracted {modification.modification_types} "
-                    f"modification with {len(modification.edits)} edits"
+                    f"Successfully extracted {len(modification.edits)} edits "
+                    f"(types: {edit_types})"
                 )
                 return modification
 
