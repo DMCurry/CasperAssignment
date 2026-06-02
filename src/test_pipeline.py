@@ -36,8 +36,14 @@ def assert_enhanced_recipe(enhanced_recipe: EnhancedRecipe) -> None:
     mod = enhanced_recipe.modifications_applied[0]
     assert len(mod.changes_made) > 0, "Expected at least one change to be applied"
     assert len(mod.modification_types) >= 1, (
-        "Expected at least one modification type"
+        "Expected at least one modification type derived from changes"
     )
+    assert mod.summary_reasoning, "Expected summary_reasoning to be populated"
+
+    for change in mod.changes_made:
+        assert change.edit_type, "Each change must have an edit_type"
+        assert change.reasoning, "Each change must have a reasoning"
+        assert change.line_index >= 0, "Each change must have a valid line_index"
 
     expected_total = sum(
         len(m.changes_made) for m in enhanced_recipe.modifications_applied

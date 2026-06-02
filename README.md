@@ -72,9 +72,19 @@ Original scraped recipes in `data/` directory contain reviews with `has_modifica
         "text": "I added an extra egg yolk for chewier texture",
         "rating": 5
       },
-      "modification_type": "addition",
-      "reasoning": "Improves texture and chewiness",
-      "changes_made": [...]
+      "modification_types": ["addition"],
+      "summary_reasoning": "Improves texture and chewiness",
+      "changes_made": [
+        {
+          "type": "ingredient",
+          "edit_type": "addition",
+          "reasoning": "Reviewer added an extra egg yolk for chewier texture",
+          "from_text": "",
+          "to_text": "1 additional egg yolk",
+          "operation": "add",
+          "line_index": 4
+        }
+      ]
     }
   ],
   "enhancement_summary": {

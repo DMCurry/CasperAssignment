@@ -4,13 +4,13 @@
   "title": "Best Chocolate Chip Cookies (Community Enhanced)",
   "ingredients": [
     "1 cup butter, softened",
-    "0.5 cup white sugar",
-    "1.5 cups packed brown sugar",
-    "2 eggs",
+    "1 cup white sugar",
+    "1 cup packed brown sugar",
+    "2 eggs + 1 egg yolk",
     "2 teaspoons vanilla extract",
     "1 teaspoon baking soda",
+    "2 teaspoons hot water",
     "0.5 teaspoon salt",
-    "1 teaspoon cream of tartar",
     "3 cups all-purpose flour",
     "2 cups semisweet chocolate chips",
     "1 cup chopped walnuts"
@@ -21,8 +21,8 @@
     "Beat in eggs, one at a time, then stir in vanilla.",
     "Dissolve baking soda in hot water. Add to batter along with salt.",
     "Stir in flour, chocolate chips, and walnuts.",
-    "Refrigerate the batter for at least an hour before scooping and baking.",
     "Drop spoonfuls of dough 2 inches apart onto ungreased baking sheets.",
+    "Use an ice cream scoop to create larger cookies. Place dough balls 2 inches apart onto ungreased baking sheets.",
     "Bake in the preheated oven until edges are nicely browned, about 10 minutes.",
     "Cool on the baking sheets briefly before removing to a wire rack to cool completely.",
     "Store in an airtight container or serve immediately and enjoy!"
@@ -30,62 +30,48 @@
   "modifications_applied": [
     {
       "source_review": {
-        "text": "These are awesome cookies. I followed the advice of others by making the following tweaks: (1) I used a half cup of sugar and one-and-a-half cups of brown sugar; (2) I omitted the water; (3) I added a teaspoon of cream of tartar to the batter; (4) I refrigerated the batter for at least an hour before scooping and baking. The cookies retained their shape and didn't spread when baked. I think the cream of tartar made a difference, and the cookies did not come out too cakey either! This recipe is going in my \"favorites\" cookbook.",
+        "text": "I used an ice cream scoop, that made 16 big cookies. I did add an additional egg yolk to help keep the cookie chewy.They turned out fantastic.",
         "reviewer": null,
         "rating": 5
       },
       "modification_types": [
-        "quantity_adjustment",
         "addition"
       ],
-      "reasoning": "Enhances flavor and texture by adjusting sugar ratio and adding cream of tartar to help cookies retain shape and prevent spreading",
+      "summary_reasoning": "Reviewer added an extra egg yolk to enhance chewiness of the cookies; Reviewer used an ice cream scoop to create larger cookies for a different texture and appearance",
       "changes_made": [
         {
           "type": "ingredient",
-          "from_text": "1 cup white sugar",
-          "to_text": "0.5 cup white sugar",
-          "operation": "replace"
-        },
-        {
-          "type": "ingredient",
-          "from_text": "1 cup packed brown sugar",
-          "to_text": "1.5 cups packed brown sugar",
-          "operation": "replace"
-        },
-        {
-          "type": "ingredient",
-          "from_text": "2 teaspoons hot water",
-          "to_text": "",
-          "operation": "remove"
-        },
-        {
-          "type": "ingredient",
-          "from_text": "",
-          "to_text": "1 teaspoon cream of tartar",
-          "operation": "add"
+          "edit_type": "addition",
+          "reasoning": "Reviewer added an extra egg yolk to enhance chewiness of the cookies",
+          "from_text": "2 eggs",
+          "to_text": "2 eggs + 1 egg yolk",
+          "operation": "replace",
+          "line_index": 3
         },
         {
           "type": "instruction",
+          "edit_type": "addition",
+          "reasoning": "Reviewer used an ice cream scoop to create larger cookies for a different texture and appearance",
           "from_text": "",
-          "to_text": "Refrigerate the batter for at least an hour before scooping and baking.",
-          "operation": "add"
+          "to_text": "Use an ice cream scoop to create larger cookies. Place dough balls 2 inches apart onto ungreased baking sheets.",
+          "operation": "add",
+          "line_index": 6
         }
       ]
     }
   ],
   "enhancement_summary": {
-    "total_changes": 5,
+    "total_changes": 2,
     "change_types": [
-      "quantity_adjustment",
       "addition"
     ],
-    "expected_impact": "Enhances flavor and texture by adjusting sugar ratio and adding cream of tartar to help cookies retain shape and prevent spreading"
+    "expected_impact": "Reviewer added an extra egg yolk to enhance chewiness of the cookies; Reviewer used an ice cream scoop to create larger cookies for a different texture and appearance"
   },
   "description": "This classic chocolate chip cookie recipe makes deliciously buttery cookies with crisp edges, chewy middles, and gooey chocolate chips in every bite.",
   "servings": "48",
   "prep_time": null,
   "cook_time": null,
   "total_time": null,
-  "created_at": "2026-06-02T12:32:35.593563",
+  "created_at": "2026-06-02T13:17:32.371199",
   "pipeline_version": "1.0.0"
 }

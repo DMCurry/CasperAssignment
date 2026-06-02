@@ -17,10 +17,14 @@ ModificationType = Literal[
     "removal",
 ]
 
+InsertMode = Literal["after_find", "append"]
+
 
 class ModificationEdit(BaseModel):
     """Individual atomic edit operation for a recipe modification."""
 
+    edit_type: ModificationType = Field(description="Category of this specific edit")
+    reasoning: str = Field(description="Why this specific edit improves the recipe")
     target: Literal["ingredients", "instructions"] = Field(
         description="Whether this edit applies to ingredients or instructions"
     )
@@ -35,17 +39,14 @@ class ModificationEdit(BaseModel):
     add: Optional[str] = Field(
         default=None, description="Text to add (required for add_after operations)"
     )
+    insert_mode: InsertMode = Field(
+        default="after_find",
+        description="Where to insert new content: after a matched line or at list end",
+    )
 
 
 class ModificationObject(BaseModel):
     """Structured modification parsed from a review."""
-
-    modification_types: List[ModificationType] = Field(
-        min_length=1,
-        description="One or more categories; compound reviews may span multiple types",
-    )
-
-    reasoning: str = Field(description="Why this modification improves the recipe")
 
     edits: List[ModificationEdit] = Field(description="List of atomic edits to apply")
 
@@ -64,10 +65,15 @@ class ChangeRecord(BaseModel):
     type: Literal["ingredient", "instruction"] = Field(
         description="Type of element that was changed"
     )
+    edit_type: ModificationType = Field(description="Category of this specific change")
+    reasoning: str = Field(description="Why this specific change was applied")
     from_text: str = Field(description="Original text before modification")
     to_text: str = Field(description="New text after modification")
     operation: Literal["replace", "add", "remove"] = Field(
         description="Type of operation performed"
+    )
+    line_index: int = Field(
+        description="0-based index in the target list after the edit was applied"
     )
 
 
@@ -77,8 +83,12 @@ class ModificationApplied(BaseModel):
     source_review: SourceReview = Field(
         description="Review that suggested this modification"
     )
-    modification_types: List[str] = Field(description="Categories of modification")
-    reasoning: str = Field(description="Why this modification was applied")
+    modification_types: List[str] = Field(
+        description="Categories of modification, derived from changes_made"
+    )
+    summary_reasoning: str = Field(
+        description="Combined summary of why changes were applied"
+    )
     changes_made: List[ChangeRecord] = Field(
         description="Detailed list of changes made"
     )
@@ -137,7 +147,6 @@ class Recipe(BaseModel):
     description: Optional[str] = None
     servings: Optional[str] = None
     rating: Optional[Dict[str, Any]] = None
-    # Include other fields as needed
 
 
 class Review(BaseModel):

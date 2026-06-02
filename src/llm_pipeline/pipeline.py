@@ -160,7 +160,8 @@ class LLMAnalysisPipeline:
                 return None
 
             logger.info(
-                f"Successfully extracted {modification.modification_types} modification"
+                f"Successfully extracted {len(modification.edits)} edits "
+                f"(types: {list({e.edit_type for e in modification.edits})})"
             )
 
             # Step 2: Apply modification to recipe
